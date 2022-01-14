@@ -282,7 +282,7 @@ export const deck = [
         id: 47
     },
     {
-        name: '10-of-clubs',
+        name: 'ten-of-clubs',
         suit: 'clubs',
         value: 10,
         id: 48
