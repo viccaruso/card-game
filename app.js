@@ -1,6 +1,7 @@
-import { 
-    redirectIfLoggedIn, 
-    signInUser, 
+import {
+    createPlayerProfile,
+    redirectIfLoggedIn,
+    signInUser,
     signupUser,
 } from './fetch-utils.js';
 
@@ -15,22 +16,30 @@ const signUpPassword = document.getElementById('sign-up-password');
 // if user currently logged in, redirect
 redirectIfLoggedIn();
 
-signUpForm.addEventListener('submit', async(event)=>{
+signUpForm.addEventListener('submit', async(event) => {
     event.preventDefault();
     const user = await signupUser(signUpEmail.value, signUpPassword.value);
+    
+    const player = {
+        player_name: 'Chuck',
+        wins: 0,
+        losses: 0,
+        total_games: 0
+    };
+    await createPlayerProfile(player);
 
-    if (user){
+    if (user) {
         redirectIfLoggedIn();
     } else {
         console.error(user);
     }
 });
 
-signInForm.addEventListener('submit', async(event)=>{
+signInForm.addEventListener('submit', async(event) => {
     event.preventDefault();
     const user = await signInUser(signInEmail.value, signInPassword.value);
 
-    if (user){
+    if (user) {
         redirectIfLoggedIn();
     } else {
         console.error(user);
