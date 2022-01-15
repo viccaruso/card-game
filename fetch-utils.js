@@ -3,6 +3,40 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZ
 
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
+
+export async function createPlayerProfile(player) {
+    const response = await client
+        .from('player_profile')
+        .insert([{
+            player_name: player.player_name,
+            wins: player.wins,
+            losses: player.losses,
+            total_games: player.total_games
+        }]);
+    
+    return checkError(response);
+}
+
+export async function getPlayerProfile(id) {
+    const response = await client
+        .from('player_profile')
+        .select()
+        .match({ id: id })
+        .single();
+    
+    return checkError(response);
+}
+
+export async function getLeaderboard() {
+    const response = await client
+        .from('leaderboard')
+        .select(`*, player_profile (*)`);
+
+    return checkError(response);
+}
+
+
+
 export async function getUser() {
     return client.auth.session();
 }
