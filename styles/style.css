@@ -76,7 +76,7 @@ footer {
     flex-direction: row;
     justify-content: space-evenly;
     width: 100%;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
 }
 
 .cpu-card-container {
@@ -119,3 +119,43 @@ footer {
 }
 
 @media (max-width: ) {}
+
+.player-card-count { 
+    position: absolute;
+    top: 50px;
+    left: 10px;
+}
+
+.score-container {
+    position: relative;
+    width: 180px;
+    height: min-content;
+    text-align: center;
+    border-radius: 5px;
+    border: solid 1px black;
+    margin: 15px auto;
+    padding: 5px;
+    font-size: 30px;
+    
+}
+
+.user-badge {
+    position: absolute;
+    text-align: center;
+    width: fit-content;
+    height: 50px;
+    border-radius: 7px;
+    top: 5px;
+    left: 2px;
+    background-color: var(--castleton-green);
+}
+.cpu-badge {
+    position: absolute;
+    text-align: center;
+    width: fit-content;
+    height: 50px;
+    border-radius: 7px;
+    top: 5px;
+    right: 7px;
+    background-color: var(--castleton-green);
+}
