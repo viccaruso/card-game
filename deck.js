@@ -326,13 +326,19 @@ export function splitDeck(deck) {
 
 }
 
+// This function takes a deck (array) and returns a new shuffled copy of the deck (array)
 export function shuffleDeck(deck) {
     const deckCopy = [...deck];
     
+    // Loop through the array
     for (let index = deckCopy.length - 1; index > 0; index--) {
+        // Get a random index whose value is constrained to the length of the array
         let randomIndex = Math.floor(Math.random() * (index + 1));
+        // Create a temporary variable to hold the value at an index
         let temp = deckCopy[index];
+        // Reassign value at specific index to the value at a random index
         deckCopy[index] = deckCopy[randomIndex];
+        // Reassign value at the random index to the value that was at the old index
         deckCopy[randomIndex] = temp;
     }
     console.log('shuffleDeck(deck) returned: ', deckCopy);
