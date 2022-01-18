@@ -13,7 +13,7 @@ export async function createPlayerProfile(player) {
             losses: player.losses,
             total_games: player.total_games
         }]);
-    
+    console.log('createPlayerProfile(player) returned: ', response);
     return checkError(response);
 }
 
@@ -23,7 +23,7 @@ export async function getPlayerProfile(id) {
         .select()
         .match({ id: id })
         .single();
-    
+    console.log('getPlayerProfile(id) returned: ', response);
     return checkError(response);
 }
 
@@ -31,7 +31,7 @@ export async function getLeaderboard() {
     const response = await client
         .from('leaderboard')
         .select(`*, player_profile (*)`);
-
+    console.log('getLeaderboard returned: ', response);
     return checkError(response);
 }
 

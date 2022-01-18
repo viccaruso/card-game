@@ -313,12 +313,16 @@ export const deck = [
     }
 ];
 
+// This function takes a deck and returns an object containing the first half and second half of the deck as separate values
 export function splitDeck(deck) {
     const playerDeck = deck.splice(0, 26);
     const cpuDeck = deck;
-    
-    return { playerDeck: playerDeck,
+    const hands = { playerDeck: playerDeck,
         cpuDeck: cpuDeck };
+    
+    console.log('splitDeck(deck) returned: ', hands);
+
+    return hands;
 
 }
 
@@ -331,5 +335,7 @@ export function shuffleDeck(deck) {
         deckCopy[index] = deckCopy[randomIndex];
         deckCopy[randomIndex] = temp;
     }
+    console.log('shuffleDeck(deck) returned: ', deckCopy);
+
     return deckCopy;
 }
