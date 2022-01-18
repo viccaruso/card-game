@@ -312,3 +312,24 @@ export const deck = [
         id: 52
     }
 ];
+
+export function splitDeck(deck) {
+    const playerDeck = deck.splice(0, 26);
+    const cpuDeck = deck;
+    
+    return { playerDeck: playerDeck,
+        cpuDeck: cpuDeck };
+
+}
+
+export function shuffleDeck(deck) {
+    const deckCopy = [...deck];
+    
+    for (let index = deckCopy.length - 1; index > 0; index--) {
+        let randomIndex = Math.floor(Math.random() * (index + 1));
+        let temp = deckCopy[index];
+        deckCopy[index] = deckCopy[randomIndex];
+        deckCopy[randomIndex] = temp;
+    }
+    return deckCopy;
+}
