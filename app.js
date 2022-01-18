@@ -16,8 +16,6 @@ signUpForm.addEventListener('submit', async(event) => {
     const data = new FormData(signUpForm);
     const userName = data.get('username');
     const user = await signupUser(data.get('email'), data.get('password'));
-    
-
     const player = {
         player_name: userName,
         wins: 0,
