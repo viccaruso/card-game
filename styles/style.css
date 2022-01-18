@@ -96,6 +96,11 @@ footer {
     width: 6.48rem;
 }
 
+.cpu-card {
+    height: 9rem;
+    width: 6.48rem;
+}
+
 .card-face {
     display: flex;
     height: 9rem;
