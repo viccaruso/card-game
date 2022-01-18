@@ -6,7 +6,7 @@ const logoutButton = document.getElementById('logout');
 
 window.addEventListener('load', async() => {
     const hands = splitDeck(shuffleDeck(deck));
-    console.log(hands);
+    console.log('The two hands are: ', hands);
 });
 
 
