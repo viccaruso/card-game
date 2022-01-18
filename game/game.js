@@ -12,10 +12,8 @@ window.addEventListener('load', async() => {
 
 startGameButton.addEventListener('click', async() => {
     const hands = splitDeck(shuffleDeck(deck));
+    console.log('The two hands are: ', hands);
     shuffleSound.play();
-
-    console.log(hands);
-
 });
 
 
