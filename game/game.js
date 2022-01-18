@@ -1,5 +1,6 @@
 import { checkAuth, getLeaderboard, getPlayerProfile, logout } from '../fetch-utils.js';
 import { deck, shuffleDeck, splitDeck } from '../deck.js';
+import { renderCard } from '../render-utils.js';
 checkAuth();
 
 const logoutButton = document.getElementById('logout');
@@ -8,6 +9,8 @@ const shuffleSound = document.querySelector('.soundBtn');
 const userCardCountEl = document.querySelector('.user-card-count');
 const cpuCardCountEl = document.querySelector('.cpu-card-count');
 const hitBtn = document.querySelector('.hit-btn');
+const playerCardContainer = document.querySelector('.player-card');
+const cpuCardContainer = document.querySelector('.cpu-card');
 
 let userCardCount = 26;
 let cpuCardCount = 26;
@@ -16,19 +19,19 @@ let cpuDeck = [];
 
 
 window.addEventListener('load', async() => {
-    const hands = splitDeck(shuffleDeck(deck));
-    console.log('The two hands are: ', hands);
-    shuffleSound.play();
+    // const hands = splitDeck(shuffleDeck(deck));
+    // console.log('The two hands are: ', hands);
+    // shuffleSound.play();
 
-    userCardCount = 26;
-    userCardCountEl.textContent = userCardCount;
-    cpuCardCount = 26;
-    cpuCardCountEl.textContent = cpuCardCount;
+    // userCardCount = 26;
+    // userCardCountEl.textContent = userCardCount;
+    // cpuCardCount = 26;
+    // cpuCardCountEl.textContent = cpuCardCount;
 
-    playerDeck = hands.playerDeck;
-    cpuDeck = hands.cpuDeck;
+    // playerDeck = hands.playerDeck;
+    // cpuDeck = hands.cpuDeck;
     
-    console.log(playerDeck, cpuDeck);
+    // console.log(playerDeck, cpuDeck);
     
 });
 
@@ -59,9 +62,13 @@ logoutButton.addEventListener('click', () => {
 
 
 function playGame() {
-
+    playerCardContainer.textContent = '';
+    renderCard(playerDeck[6]);
+    playerCardContainer.append(renderCard(playerDeck[0]));
+    cpuCardContainer.textContent = '';
+    cpuCardContainer.append(renderCard(cpuDeck[0]));
     // if (playerDeck[0].value > cpuDeck[0].value) {
         
     // }
-    console.log(playerDeck[5].value);
+    
 }
