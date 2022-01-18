@@ -5,11 +5,12 @@ body {
     --opal: #9ebebdff;
     --burnished-brown: #a48081ff;
     --rose-vale: #a94245ff;
-    --deep-taupe: #7d5758ff;
+    --dark-wood-brown: #5f3628;
+    --light-wood-brown: #B07C4F;
     --black: #000000ff;
     --dark-slate-blue: #553c8eff;
     
-    --header-height: 50px;
+    --header-height: 40px;
     --shadow: 0px 10px 20px -12px rgba(0,0,0,0.45);
     --gutter: 30px;
     --footer-height: 25px;
@@ -26,12 +27,11 @@ main {
     margin-bottom: calc(var(--footer-height));
 }
 
-
 header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background-color: var(--color3);
+    background-color: var(--castleton-green);
     height: var(--header-height);
     box-shadow: var(--shadow);
 }
@@ -50,7 +50,6 @@ footer {
     background-color: var(--color3);
     box-shadow: var(--shadow);
 }
-
 
 .auth-main {
     display: flex;
@@ -71,12 +70,16 @@ footer {
     margin: 10px;
 }
 
+.display-name {
+    margin: .5rem auto;
+}
+
 .player-card-container {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     width: 100%;
-    margin-top: 2rem;
+    margin-top: 1.2rem;
 }
 
 .cpu-card-container {
@@ -84,7 +87,13 @@ footer {
     flex-direction: row;
     justify-content: space-evenly;
     width: 100%;
-    margin-top: 1.5rem;
+    margin-top: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.player-card {
+    height: 9rem;
+    width: 6.48rem;
 }
 
 .card-face {
@@ -118,44 +127,51 @@ footer {
     color: black
 }
 
-@media (max-width: ) {}
-
-.player-card-count { 
-    position: absolute;
-    top: 50px;
-    left: 10px;
+.hit-btn {
+    margin-top: 1.2rem;
 }
 
 .score-container {
+    display: flex;
     position: relative;
-    width: 180px;
-    height: min-content;
+    width: 10rem;
+    height: 3.5rem;
     text-align: center;
     border-radius: 5px;
-    border: solid 1px black;
-    margin: 15px auto;
+    border: solid 2px var(--castleton-green);
+    margin: 0 auto;
     padding: 5px;
-    font-size: 30px;
-    
+    font-size: 40px;
+    align-items: center;
+    justify-content: center;
 }
 
 .user-badge {
-    position: absolute;
-    text-align: center;
-    width: fit-content;
-    height: 50px;
-    border-radius: 7px;
-    top: 5px;
-    left: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 25px;
+    border-radius: 5px;
     background-color: var(--castleton-green);
+    border: solid 1px black;
+    font-size: .9rem;
+    position: absolute;
+    top: 15px;
+    left: -25px;
 }
+
 .cpu-badge {
-    position: absolute;
-    text-align: center;
-    width: fit-content;
-    height: 50px;
-    border-radius: 7px;
-    top: 5px;
-    right: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 25px;
+    border-radius: 5px;
     background-color: var(--castleton-green);
+    border: solid 1px black;
+    font-size: .9rem;
+    position: absolute;
+    top: 15px;
+    right: -25px;
 }
