@@ -6,13 +6,13 @@ checkAuth();
 const logoutButton = document.getElementById('logout');
 const newGameButton = document.querySelector('.new-game');
 const shuffleSound = document.querySelector('.soundBtn');
-const userCardCountEl = document.querySelector('.user-card-count');
+const playerCardCountEl = document.querySelector('.player-card-count');
 const cpuCardCountEl = document.querySelector('.cpu-card-count');
 const hitBtn = document.querySelector('.hit-btn');
 const playerCardContainer = document.querySelector('.player-card');
 const cpuCardContainer = document.querySelector('.cpu-card');
 
-let userCardCount = 26;
+let playerCardCount = 26;
 let cpuCardCount = 26;
 let playerDeck = [];
 let cpuDeck = [];
@@ -37,11 +37,11 @@ window.addEventListener('load', async() => {
 
 newGameButton.addEventListener('click', async() => {
     const hands = splitDeck(shuffleDeck(deck));
-    console.log('The two hands are: ', hands);
+    // console.log('The two hands are: ', hands);
     shuffleSound.play();
 
-    userCardCount = 26;
-    userCardCountEl.textContent = userCardCount;
+    playerCardCount = 26;
+    playerCardCountEl.textContent = playerCardCount;
     cpuCardCount = 26;
     cpuCardCountEl.textContent = cpuCardCount;
 
@@ -63,12 +63,40 @@ logoutButton.addEventListener('click', () => {
 
 function playGame() {
     playerCardContainer.textContent = '';
-    renderCard(playerDeck[6]);
-    playerCardContainer.append(renderCard(playerDeck[0]));
     cpuCardContainer.textContent = '';
-    cpuCardContainer.append(renderCard(cpuDeck[0]));
-    // if (playerDeck[0].value > cpuDeck[0].value) {
-        
-    // }
     
+    const playerHand = playerDeck.shift();
+    const cpuHand = cpuDeck.shift();
+    
+    playerCardContainer.append(renderCard(playerHand));
+    cpuCardContainer.append(renderCard(cpuHand));
+
+    // console.log(playerHand.value, cpuHand.value);
+    
+
+    if (playerHand.value > cpuHand.value) {
+        playerDeck.push(playerHand, cpuHand);
+        playerCardCount++;
+        cpuCardCount--;
+        playerCardCountEl.textContent = playerCardCount;
+        cpuCardCountEl.textContent = cpuCardCount;
+    } else if (cpuHand.value > playerHand.value) {
+        cpuDeck.push(playerHand, cpuHand);
+        playerCardCount--;
+        cpuCardCount++;
+        playerCardCountEl.textContent = playerCardCount;
+        cpuCardCountEl.textContent = cpuCardCount;
+    } else if (cpuHand.value === playerHand.value) {
+        console.log('!!!!!!WAR!!!!!!');
+        
+    }
+
+    // if (playerCardCount === 0) {
+
+    // }
+
+    console.log('playerDeck', playerDeck, 'cpuDeck', cpuDeck);
+
+
 }
+
