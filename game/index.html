@@ -23,25 +23,33 @@
         </div>
     </header>    
     <main>
-        <h1 class="display-name">placeholder lorem</h1>
+        <h1 class="display-name">UserName is playing!</h1>
         <div class="score-container">
-            <div class="user-badge">user</div>
-            <div class="cpu-badge">cpu</div>
-            <span class="user-score">0 </span>:<span class="cpu-score"> 0</span>
+            <div class="user-badge">USER</div>
+            <div class="cpu-badge">CPU</div>
+            <span class="user-score">0</span> : <span class="cpu-score">0</span>
         </div>
 
         <button class="hit-btn">Hit!</button>
-        <!-- <div class="player-hand"> -->
+        
         <div class="player-card-container">
             <div class="player-deck card-back">Player Deck</div>
-            <div class="player-card card-face">player card</div>
+
+            <!-- this div gives us an empty container with the exact dimensions of the "card" we will render -->
+            
+            <div class="player-card">
+
+                <!-- this div is the "card" we render on hit -->
+                <div class="card-face">A ♠️</div>
+
+            </div>
         </div>
-        <!-- </div> -->
-    <div class="cpu-hand">
+        <hr style='width: 100%;'>
+
         <div class="cpu-card-container">
             <div class="cpu-card card-face">cpu card</div>
             <div class="cpu-deck card-back">CPU DECK</div>
-            </div> 
+        </div> 
     </main>
     <footer>
         <div class="copy gutter-right">&copy; 2021 Alchemy Code Lab</div>
