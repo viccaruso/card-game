@@ -49,3 +49,4 @@ export function renderCard(card) {
     return cardDiv;
     
 }
+

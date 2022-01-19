@@ -21,7 +21,7 @@ export async function getPlayerProfile(id) {
     const response = await client
         .from('player_profile')
         .select()
-        .match({ id: id })
+        .match({ user_id: id })
         .single();
     console.log('getPlayerProfile(id) returned: ', response);
     return checkError(response);
@@ -34,6 +34,8 @@ export async function getLeaderboard() {
     console.log('getLeaderboard returned: ', response);
     return checkError(response);
 }
+
+
 
 
 

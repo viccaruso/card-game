@@ -1,4 +1,4 @@
-import { checkAuth, logout } from '../fetch-utils.js';
+import { checkAuth, logout, getLeaderboard, getPlayerProfile, getUser } from '../fetch-utils.js';
 
 checkAuth();
 
@@ -6,4 +6,15 @@ const logoutButton = document.getElementById('logout');
 
 logoutButton.addEventListener('click', () => {
     logout();
+});
+
+window.addEventListener('load', async() => {
+    
+    //const params = new URLSearchParams(window.location.search);
+    const user = await getUser();
+    getLeaderboard();
+    const player = await getPlayerProfile(user.user.id);
+    console.log(player);
+    console.log(user);
+    //console.log(id);
 });
