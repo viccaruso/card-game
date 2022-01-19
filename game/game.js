@@ -16,9 +16,9 @@ let playerCardCount = 26;
 let cpuCardCount = 26;
 let playerDeck = [];
 let cpuDeck = [];
+let warArr = [];
 
-
-window.addEventListener('load', async() => {
+window.addEventListener('load', async () => {
     // const hands = splitDeck(shuffleDeck(deck));
     // console.log('The two hands are: ', hands);
     // shuffleSound.play();
@@ -30,14 +30,13 @@ window.addEventListener('load', async() => {
 
     // playerDeck = hands.playerDeck;
     // cpuDeck = hands.cpuDeck;
-    
+
     // console.log(playerDeck, cpuDeck);
-    
+
 });
 
-newGameButton.addEventListener('click', async() => {
+newGameButton.addEventListener('click', async () => {
     const hands = splitDeck(shuffleDeck(deck));
-    // console.log('The two hands are: ', hands);
     shuffleSound.play();
 
     playerCardCount = 26;
@@ -47,12 +46,9 @@ newGameButton.addEventListener('click', async() => {
 
     playerDeck = hands.playerDeck;
     cpuDeck = hands.cpuDeck;
-    
-    console.log(playerDeck, cpuDeck);
-    return playerDeck, cpuDeck;
 });
 
-hitBtn.addEventListener('click', async() => {
+hitBtn.addEventListener('click', async () => {
     playGame();
 });
 
@@ -62,41 +58,60 @@ logoutButton.addEventListener('click', () => {
 
 
 function playGame() {
-    playerCardContainer.textContent = '';
-    cpuCardContainer.textContent = '';
-    
+
     const playerHand = playerDeck.shift();
     const cpuHand = cpuDeck.shift();
-    
-    playerCardContainer.append(renderCard(playerHand));
-    cpuCardContainer.append(renderCard(cpuHand));
-
-    // console.log(playerHand.value, cpuHand.value);
-    
+    displayCards(playerHand, cpuHand);
+    console.log('Player Deck Count: ', playerDeck.length);
+    console.log('CPU Deck Count: ', cpuDeck.length);
+    console.log('War Array Length:', warArr.length);
+    console.log('Cards on table: ', playerHand.value, ' ', cpuHand.value);
 
     if (playerHand.value > cpuHand.value) {
+        if (warArr.length > 0) {
+            console.log(warArr);
+            for (let card of warArr) {
+                playerDeck.push(card);
+            }
+            warArr = [];
+        }
+
         playerDeck.push(playerHand, cpuHand);
-        playerCardCount++;
-        cpuCardCount--;
-        playerCardCountEl.textContent = playerCardCount;
-        cpuCardCountEl.textContent = cpuCardCount;
+
+        playerCardCount = playerDeck.length;
+        cpuCardCount = cpuDeck.length;
     } else if (cpuHand.value > playerHand.value) {
+        if (warArr.length > 0) {
+            console.log(warArr);
+            for (let card of warArr) {
+                cpuDeck.push(card);
+            }
+            warArr = [];
+        }
         cpuDeck.push(playerHand, cpuHand);
-        playerCardCount--;
-        cpuCardCount++;
-        playerCardCountEl.textContent = playerCardCount;
-        cpuCardCountEl.textContent = cpuCardCount;
-    } else if (cpuHand.value === playerHand.value) {
-        console.log('!!!!!!WAR!!!!!!');
-        
+        playerCardCount = playerDeck.length;
+        cpuCardCount = cpuDeck.length;
+    } else {
+        displayCards(playerHand, cpuHand);
+        console.error('!!!!!!WAR!!!!!!');
+        warArr.push(playerHand, cpuHand);
+        console.log(warArr);
+        console.error(warArr.length);
     }
 
-    // if (playerCardCount === 0) {
-
-    // }
-
-    console.log('playerDeck', playerDeck, 'cpuDeck', cpuDeck);
-
-
+    playerCardCountEl.textContent = playerCardCount;
+    cpuCardCountEl.textContent = cpuCardCount;
+    setTimeout(resetCards, 2000);
 }
 
+function displayCards(playerHand, cpuHand) {
+    playerCardContainer.textContent = '';
+    cpuCardContainer.textContent = '';
+    playerCardContainer.append(renderCard(playerHand));
+    cpuCardContainer.append(renderCard(cpuHand));
+}
+
+function resetCards() {
+    playerCardContainer.textContent = '';
+    cpuCardContainer.textContent = '';
+}
