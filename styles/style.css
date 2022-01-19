@@ -196,7 +196,7 @@ footer {
     border: solid 1px black;
 }
 
-.one:hover {
+.one {
 
    grid-column-start: 2;
    grid-column-end: 3;
@@ -224,7 +224,7 @@ footer {
     grid-column-end: 4;
     grid-row-start: 2;
     grid-row-end: 3;
-  
+}
 .stats-container {
     display: flex;
     flex-direction: row;
