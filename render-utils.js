@@ -71,3 +71,16 @@ export function renderPlayer(player) {
     playerContainer.append(nameEl, winsEl, lossesEl, totalGamesEl);
     return playerContainer;
 }
+
+export function renderLeaderboard(arr) {
+    const leaderboardContainer = document.createElement('div');
+    
+    for (let player of arr) {
+        console.log('player=player', player);
+        const playerDiv = renderPlayer(player);
+        leaderboardContainer.append(playerDiv);
+        
+
+    }
+    return leaderboardContainer;
+}

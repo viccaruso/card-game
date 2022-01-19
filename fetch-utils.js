@@ -30,8 +30,9 @@ export async function getPlayerProfile(id) {
 
 export async function getLeaderboard() {
     const response = await client
-        .from('leaderboard')
-        .select(`*, player_profile (*)`);
+        .from('player_profile')
+        .select()
+        .order('wins', { ascending: true });
     console.log('getLeaderboard returned: ', response);
     return checkError(response);
 }
