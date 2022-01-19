@@ -21,6 +21,7 @@ window.addEventListener('load', async() => {
     console.log(player);
     const playerEl = renderPlayer(player);
     const leaderboardEl = renderLeaderboard(leaderboard);
+    
     statsContainer.append(playerEl);
     leaderboardContainer.append(leaderboardEl);
     

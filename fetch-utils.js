@@ -37,6 +37,15 @@ export async function getLeaderboard() {
     return checkError(response);
 }
 
+export async function updateGame(id, game) {
+    const response = await client
+        .from('player_profile')
+        .update([{ game }])
+        .match({ id });
+
+    return checkError(response);
+}
+
 
 
 

@@ -19,6 +19,8 @@ let cpuDeck = [];
 let warArr = [];
 
 window.addEventListener('load', async() => {
+    hitBtn.setAttribute('disabled', true);
+
     // const hands = splitDeck(shuffleDeck(deck));
     // console.log('The two hands are: ', hands);
     // shuffleSound.play();
@@ -36,6 +38,8 @@ window.addEventListener('load', async() => {
 });
 
 newGameButton.addEventListener('click', async() => {
+    hitBtn.removeAttribute('disabled');
+
     const hands = splitDeck(shuffleDeck(deck));
     shuffleSound.play();
 
@@ -46,10 +50,11 @@ newGameButton.addEventListener('click', async() => {
 
     playerDeck = hands.playerDeck;
     cpuDeck = hands.cpuDeck;
+
 });
 
 hitBtn.addEventListener('click', async() => {
-    // while (playerCardCount > 20 && cpuCardCount > 20) {
+    hitBtn.setAttribute('disabled', true);
 
     playGame();
 });
@@ -60,7 +65,7 @@ logoutButton.addEventListener('click', () => {
 
 
 function playGame() {
-    
+
     const playerHand = playerDeck.shift();
     const cpuHand = cpuDeck.shift();
     displayCards(playerHand, cpuHand);
@@ -116,4 +121,7 @@ function displayCards(playerHand, cpuHand) {
 function resetCards() {
     playerCardContainer.textContent = '';
     cpuCardContainer.textContent = '';
+
+    hitBtn.removeAttribute('disabled');
+
 }
