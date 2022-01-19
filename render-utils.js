@@ -50,3 +50,24 @@ export function renderCard(card) {
     
 }
 
+export function renderPlayer(player) {
+    const playerContainer = document.createElement('div');
+    const nameEl = document.createElement('h1');
+    const winsEl = document.createElement('p');
+    const lossesEl = document.createElement('p');
+    const totalGamesEl = document.createElement('p');
+
+    playerContainer.classList.add('player-container');
+    nameEl.classList.add('player-name');
+    winsEl.classList.add('wins');
+    lossesEl.classList.add('losses');
+    totalGamesEl.classList.add('games-played');
+
+    nameEl.textContent = player.player_name;
+    winsEl.textContent = `Total Wins: ${player.wins}`;
+    lossesEl.textContent = `Total Losses: ${player.losses}`;
+    totalGamesEl.textContent = `Total Games: ${player.total_games}`;
+
+    playerContainer.append(nameEl, winsEl, lossesEl, totalGamesEl);
+    return playerContainer;
+}
