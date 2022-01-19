@@ -180,3 +180,9 @@ footer {
     top: 15px;
     right: -25px;
 }
+
+.stats-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
