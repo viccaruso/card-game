@@ -18,7 +18,7 @@ let playerDeck = [];
 let cpuDeck = [];
 let warArr = [];
 
-window.addEventListener('load', async () => {
+window.addEventListener('load', async() => {
     // const hands = splitDeck(shuffleDeck(deck));
     // console.log('The two hands are: ', hands);
     // shuffleSound.play();
@@ -35,7 +35,7 @@ window.addEventListener('load', async () => {
 
 });
 
-newGameButton.addEventListener('click', async () => {
+newGameButton.addEventListener('click', async() => {
     const hands = splitDeck(shuffleDeck(deck));
     shuffleSound.play();
 
@@ -48,7 +48,9 @@ newGameButton.addEventListener('click', async () => {
     cpuDeck = hands.cpuDeck;
 });
 
-hitBtn.addEventListener('click', async () => {
+hitBtn.addEventListener('click', async() => {
+    // while (playerCardCount > 20 && cpuCardCount > 20) {
+
     playGame();
 });
 
@@ -58,7 +60,7 @@ logoutButton.addEventListener('click', () => {
 
 
 function playGame() {
-
+    
     const playerHand = playerDeck.shift();
     const cpuHand = cpuDeck.shift();
     displayCards(playerHand, cpuHand);
