@@ -10,7 +10,7 @@ logoutButton.addEventListener('click', () => {
 
 window.addEventListener('load', async() => {
     
-    //const params = new URLSearchParams(window.location.search);
+    
     const user = await getUser();
     getLeaderboard();
     const player = await getPlayerProfile(user.user.id);

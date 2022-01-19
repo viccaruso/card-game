@@ -24,6 +24,7 @@ export async function getPlayerProfile(id) {
         .match({ user_id: id })
         .single();
     console.log('getPlayerProfile(id) returned: ', response);
+     
     return checkError(response);
 }
 
