@@ -17,6 +17,7 @@ let cpuCardCount = 26;
 let playerDeck = [];
 let cpuDeck = [];
 let warArr = [];
+let wins = 0;
 
 window.addEventListener('load', async() => {
     hitBtn.setAttribute('disabled', true);
@@ -65,6 +66,7 @@ logoutButton.addEventListener('click', () => {
 
 
 function playGame() {
+    
 
     const playerHand = playerDeck.shift();
     const cpuHand = cpuDeck.shift();
@@ -100,15 +102,22 @@ function playGame() {
         cpuCardCount = cpuDeck.length;
     } else {
         displayCards(playerHand, cpuHand);
+        const playerTopOne = playerDeck.shift();
+        const playerTopTwo = playerDeck.shift();
+        const playerTopThree = playerDeck.shift();
+        const cpuTopOne = cpuDeck.shift();
+        const cpuTopTwo = cpuDeck.shift();
+        const cpuTopThree = cpuDeck.shift();
         console.error('!!!!!!WAR!!!!!!');
-        warArr.push(playerHand, cpuHand);
+        warArr.push(playerHand, cpuHand, playerTopOne, playerTopTwo, playerTopThree, cpuTopOne, cpuTopTwo, cpuTopThree);
         console.log(warArr);
         console.error(warArr.length);
     }
 
     playerCardCountEl.textContent = playerCardCount;
     cpuCardCountEl.textContent = cpuCardCount;
-    setTimeout(resetCards, 2000);
+    setTimeout(resetCards, 500);
+    checkWin();
 }
 
 function displayCards(playerHand, cpuHand) {
@@ -125,3 +134,19 @@ function resetCards() {
     hitBtn.removeAttribute('disabled');
 
 }
+
+function checkWin() {
+    if (cpuCardCount < 20) {
+        console.error('YOU WON THE WAR', cpuCardCount);
+        //  updates the games won for player 
+        // updates total games for player
+        // render "You WIN" modal 
+        
+    }
+    if (playerCardCount < 20) {
+        console.error('YOU LOST', playerCardCount); 
+        // updates total games for player
+        // render "YOU LOST" modal 
+    }
+}
+ 
