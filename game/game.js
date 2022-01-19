@@ -18,6 +18,7 @@ let playerDeck = [];
 let cpuDeck = [];
 let warArr = [];
 let wins = 0;
+let totalGames = 0;
 
 window.addEventListener('load', async() => {
     hitBtn.setAttribute('disabled', true);
@@ -137,6 +138,8 @@ function resetCards() {
 
 function checkWin() {
     if (cpuCardCount < 20) {
+        wins++;
+        totalGames++;
         console.error('YOU WON THE WAR', cpuCardCount);
         //  updates the games won for player 
         // updates total games for player
@@ -144,6 +147,7 @@ function checkWin() {
         
     }
     if (playerCardCount < 20) {
+        totalGames++;
         console.error('YOU LOST', playerCardCount); 
         // updates total games for player
         // render "YOU LOST" modal 
