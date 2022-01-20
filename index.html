@@ -20,17 +20,16 @@
         </div>
     </header>
     <main class="auth-main">
-        <div class="left">
-            <div class="auth-container">
-                <form id="sign-in">
-                    <h3>Sign In</h3>
-                    <label>Email </label><input type="email" name="email" id="sign-in-email" />
-                    <label>Password </label><input type="password" name="password" id="sign-in-password" />
-                    <button>Submit</button>
-                </form>
+            <div class="sign-in-modal-bg auth-container">
+                <div class="sign-in-modal">
+                    <form id="sign-in">
+                        <h3>Sign In</h3>
+                        <label>Email </label><input type="email" name="email" id="sign-in-email" />
+                        <label>Password </label><input type="password" name="password" id="sign-in-password" />
+                        <button>Submit</button>
+                    </form>
+                </div>
             </div>
-        </div>
-        <div class="right">
             <div class="auth-container">
                 <form id='sign-up'>
                     <h3>Sign Up</h3>
@@ -39,8 +38,10 @@
                     <label>Password </label><input type='password' name='password' id="sign-up-password" />
                     <button>Submit</button>
                 </form>
+                <div>
+                    <p>Already have an account? <span><button class='sign-in-btn'>Sign in</button></span></p>
+                </div>
             </div>
-        </div>
     </main>
     <footer>
 

@@ -1,4 +1,3 @@
-
 body {
     --castleton-green: #225d4bff;
     --wintergreen-dream: #608e84ff;
@@ -9,13 +8,12 @@ body {
     --light-wood-brown: #B07C4F;
     --black: #000000ff;
     --dark-slate-blue: #553c8eff;
-    
+
     --header-height: 40px;
-    --shadow: 0px 10px 20px -12px rgba(0,0,0,0.45);
+    --shadow: 0px 10px 20px -12px rgba(0, 0, 0, 0.45);
     --gutter: 30px;
     --footer-height: 25px;
 
-    
     font-family: 'Titillium Web', sans-serif;
     background-color: var(--wintergreen-dream);
 }
@@ -204,18 +202,11 @@ footer {
 }
 
 .one {
-
    position: relative;
    grid-column-start: 2;
    grid-column-end: 3;
    grid-row-start: 1;
    grid-row-end: 2;
-
-grid-column-start: 2;
-grid-column-end: 3;
-grid-row-start: 1;
-grid-row-end: 2;
-
 }
 
 .one:hover {
@@ -233,6 +224,10 @@ grid-row-end: 2;
 .one img {
     height: 18rem;
     width: 12.96rem;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
 }
 
 .two {
@@ -328,7 +323,7 @@ background-color: black;
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -336,8 +331,6 @@ background-color: black;
     opacity: 0;
     transition: visibility 0s, opacity 0.5s;
 }
-
-
 
 .modal {
     background-color: var(--opal);
@@ -374,7 +367,7 @@ table, th, td {
     border: 1px solid black;
 }
 
-table { 
+table {
     width: 100%;
     border-collapse: collapse;
     text-align: center;
@@ -385,19 +378,28 @@ table {
     margin-bottom: 5rem;
 }
 
-
-.win-modal-bg {
+.win-modal-bg .sign-in-modal-bg {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
     visibility: hidden;
     opacity: 0;
+    transition: visibility 0s opacity 0.5s;
+}
+
+.sign-in-modal {
+    background-color: white;
+    width: 30%;
+    height: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
     transition: visibility 0s, opacity 0.5s;
 }
 
