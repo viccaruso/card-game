@@ -1,4 +1,4 @@
-import { checkAuth, getLeaderboard, getPlayerProfile, getUser, logout, updateGame } from '../fetch-utils.js';
+import { checkAuth, getPlayerProfile, getUser, logout, updateGame } from '../fetch-utils.js';
 import { deck, shuffleDeck, splitDeck } from '../deck.js';
 import { renderCard } from '../render-utils.js';
 checkAuth();
@@ -12,8 +12,13 @@ const hitBtn = document.querySelector('.hit-btn');
 const playerCardContainer = document.querySelector('.player-card');
 const cpuCardContainer = document.querySelector('.cpu-card');
 
+const modalBtn = document.querySelector('.modal-btn');
+const rulesBtn = document.querySelector('.rules-btn');
+const modalBg = document.querySelector('.modal-bg');
+
 let user;
 let player;
+
 let playerCardCount = 26;
 let cpuCardCount = 26;
 let playerDeck = [];
@@ -21,6 +26,14 @@ let cpuDeck = [];
 let warArr = [];
 let wins = 0;
 let totalGames = 0;
+
+modalBtn.addEventListener('click', () => {
+    modalBg.classList.remove('modal-bg-active');
+});
+
+rulesBtn.addEventListener('click', () => {
+    modalBg.classList.add('modal-bg-active');
+});
 
 window.addEventListener('load', async() => {
     user = await getUser();
@@ -73,14 +86,11 @@ function playGame() {
     const playerHand = playerDeck.shift();
     const cpuHand = cpuDeck.shift();
     displayCards(playerHand, cpuHand);
-    console.log('Player Deck Count: ', playerDeck.length);
-    console.log('CPU Deck Count: ', cpuDeck.length);
-    console.log('War Array Length:', warArr.length);
-    console.log('Cards on table: ', playerHand.value, ' ', cpuHand.value);
 
     if (playerHand.value > cpuHand.value) {
+
         if (warArr.length > 0) {
-            console.log(warArr);
+            
             for (let card of warArr) {
                 playerDeck.push(card);
             }
@@ -93,7 +103,7 @@ function playGame() {
         cpuCardCount = cpuDeck.length;
     } else if (cpuHand.value > playerHand.value) {
         if (warArr.length > 0) {
-            console.log(warArr);
+            
             for (let card of warArr) {
                 cpuDeck.push(card);
             }
@@ -112,8 +122,7 @@ function playGame() {
         const cpuTopThree = cpuDeck.shift();
         console.error('!!!!!!WAR!!!!!!');
         warArr.push(playerHand, cpuHand, playerTopOne, playerTopTwo, playerTopThree, cpuTopOne, cpuTopTwo, cpuTopThree);
-        console.log(warArr);
-        console.error(warArr.length);
+
     }
 
     playerCardCountEl.textContent = playerCardCount;
@@ -135,32 +144,26 @@ function resetCards() {
     cpuCardContainer.textContent = '';
 
     // hitBtn.removeAttribute('disabled');
-
 }
 
 function checkWin() {
     if (cpuCardCount < 23) {
         wins++;
         totalGames++;
-        console.error('YOU WON THE WAR', cpuCardCount);
-        //  updates the games won for player 
-        // updates total games for player
+
         // render "You WIN" modal 
-        
         const displayName = document.querySelector('.display-name');
         displayName.textContent = `You won the War!`;
-        
+
         hitBtn.setAttribute('disabled', true);
     }
     if (playerCardCount < 23) {
         totalGames++;
-        console.error('YOU LOST', playerCardCount); 
-        // updates total games for player
-        // render "YOU LOST" modal 
-        
+
+        // render "YOU LOST" modal?
         const displayName = document.querySelector('.display-name');
         displayName.textContent = `You were defeated!`;
-        
+
         hitBtn.setAttribute('disabled', true);
     }
 }

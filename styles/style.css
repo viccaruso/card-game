@@ -14,12 +14,14 @@ body {
     --shadow: 0px 10px 20px -12px rgba(0,0,0,0.45);
     --gutter: 30px;
     --footer-height: 25px;
+
     
     font-family: 'Titillium Web', sans-serif;
     background-color: var(--wintergreen-dream);
 }
 
 main {
+
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -28,6 +30,8 @@ main {
 }
 
 header {
+    position: sticky;
+    top: 0;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -47,8 +51,9 @@ footer {
     height: var(--footer-height);
     display: flex;
     justify-content: flex-end;
-    background-color: var(--color3);
+    background-color: var(--castleton-green);
     box-shadow: var(--shadow);
+    margin-top: 1rem;
 }
 
 .auth-main {
@@ -199,11 +204,18 @@ footer {
 }
 
 .one {
+
    position: relative;
    grid-column-start: 2;
    grid-column-end: 3;
    grid-row-start: 1;
    grid-row-end: 2;
+
+grid-column-start: 2;
+grid-column-end: 3;
+grid-row-start: 1;
+grid-row-end: 2;
+
 }
 
 .one:hover {
@@ -309,12 +321,70 @@ background-color: black;
 
 }
 
+
+.modal-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s;
+}
+
+.modal-bg-active {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal {
+    background-color: var(--opal);
+    width: 55%;
+    height: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    font-size: .6rem;
+    border-radius: 7px;
+    border: solid 5px var(--dark-wood-brown);
+    padding: 1.5rem;
+    margin: 3px;
+}
+
+.modal h2 {
+    margin: 0 auto;
+    text-decoration: underline;
+}
+
+.modal p {
+    margin: 0 auto;
+
+}
+
+.modal button {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 table, th, td {
     border: 1px solid black;
-  }
+}
 
-  table { 
+table { 
     width: 100%;
     border-collapse: collapse;
     text-align: center;
-  }
+}
+
+
+.leaderboard-container {
+    margin-bottom: 5rem;
+}
+
