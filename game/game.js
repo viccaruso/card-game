@@ -93,6 +93,7 @@ window.addEventListener('load', async() => {
     cpuDeck = player.cpu_deck;
 
     displayName(player);
+    checkWin();
 
 });
 
