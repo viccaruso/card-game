@@ -189,6 +189,8 @@ footer {
 
 .about-me-container {
     display: grid;
+    align-items: center;
+    text-align: center;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
     gap: 4rem;
@@ -197,38 +199,121 @@ footer {
 
 .about-div {
     width: 300px;
-    height: 300px;
-    border: solid 1px black;
+    height: 289px;
+    /* border: solid 1px black; */
 }
 
 .one {
+
+   position: relative;
+   grid-column-start: 2;
+   grid-column-end: 3;
+   grid-row-start: 1;
+   grid-row-end: 2;
+
 grid-column-start: 2;
 grid-column-end: 3;
 grid-row-start: 1;
 grid-row-end: 2;
+
+}
+
+.one:hover {
+    background-color: black;
+}
+
+.one .trevText {
+    visibility: hidden;
+}
+.one:hover .trevText {
+    visibility: visible;
+    color: white;
+}
+
+.one img {
+    height: 18rem;
+    width: 12.96rem;
 }
 
 .two {
+   
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 2;
 
 }
+.two:hover {
+    background-color: black;
+}
+
+.two .vicText {
+    visibility: hidden;
+}
+
+.two:hover .vicText {
+    visibility: visible;
+    color: white;
+}
+
+.two img {
+    height: 18rem;
+    width: 12.96rem;
+}
 
 .three {
+ 
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 3;
 }
 
+.three:hover {
+background-color: black;
+}
+
+.three .denText {
+    visibility: hidden;
+}
+
+.three:hover .denText {
+    visibility: visible;
+    color: white;
+}
+
+.three img {
+    height: 18rem;
+    width: 12.96;
+}
+
 .four {
+    
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 2;
     grid-row-end: 3;
 }
+
+.four:hover {
+    background-color: black;
+}
+
+.four .cliffText {
+    visibility: hidden;
+}
+
+.four:hover .cliffText {
+    visibility: visible;
+    color: white;
+}
+
+.four img {
+    height: 18rem;
+    width: 12.96rem;
+}
+
+ 
 .stats-container {
     display: flex;
     flex-direction: row;
