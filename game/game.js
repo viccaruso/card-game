@@ -21,6 +21,8 @@ const winModalBg = document.querySelector('.win-modal-bg');
 const loseModalBtn = document.querySelector('.lose-modal-btn');
 const loseModalBg = document.querySelector('.lose-modal-bg');
 
+const playerStack = document.querySelector('.player-deck');
+const cpuStack = document.querySelector('.cpu-deck');
 
 let user;
 let player;
@@ -60,6 +62,9 @@ winModalBtn.addEventListener('click', () => {
 
     playerDeck = hands.playerDeck;
     cpuDeck = hands.cpuDeck;
+
+    playerStack.classList.add('card-back');
+    cpuStack.classList.add('card-back');
 });
 
 loseModalBtn.addEventListener('click', () => {
@@ -80,6 +85,9 @@ loseModalBtn.addEventListener('click', () => {
 
     playerDeck = hands.playerDeck;
     cpuDeck = hands.cpuDeck;
+
+    playerStack.classList.add('card-back');
+    cpuStack.classList.add('card-back');
 });
 
 window.addEventListener('load', async() => {
@@ -114,6 +122,9 @@ newGameButton.addEventListener('click', async() => {
 
     playerDeck = hands.playerDeck;
     cpuDeck = hands.cpuDeck;
+
+    playerStack.classList.add('card-back');
+    cpuStack.classList.add('card-back');
 
 });
 
@@ -199,13 +210,16 @@ function checkWin() {
         wins++;
         totalGames++;
 
-        // render "You WIN" modal 
         const displayName = document.querySelector('.display-name');
         displayName.textContent = `You won the War!`;
-
+        
+        // render "You WIN" modal 
         winModalBg.classList.add('modal-bg-active');
 
         hitBtn.setAttribute('disabled', true);
+
+        playerStack.classList.remove('card-back');
+        cpuStack.classList.remove('card-back');
     }
     if (playerCardCount < 23) {
         totalGames++;
@@ -217,6 +231,9 @@ function checkWin() {
         loseModalBg.classList.add('modal-bg-active');
 
         hitBtn.setAttribute('disabled', true);
+
+        playerStack.classList.remove('card-back');
+        cpuStack.classList.remove('card-back');
     }
 }
 
