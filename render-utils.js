@@ -65,7 +65,7 @@ export function renderPlayer(player) {
 
     nameEl.textContent = player.player_name;
     winsEl.textContent = `Total Wins: ${player.wins}`;
-    lossesEl.textContent = `Total Losses: ${player.losses}`;
+    lossesEl.textContent = `Total Losses: ${player.total_games - player.wins}`;
     totalGamesEl.textContent = `Total Games: ${player.total_games}`;
 
     playerContainer.append(nameEl, winsEl, lossesEl, totalGamesEl);
