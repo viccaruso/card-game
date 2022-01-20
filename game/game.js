@@ -11,7 +11,10 @@ const cpuCardCountEl = document.querySelector('.cpu-card-count');
 const hitBtn = document.querySelector('.hit-btn');
 const playerCardContainer = document.querySelector('.player-card');
 const cpuCardContainer = document.querySelector('.cpu-card');
-
+const modalBtn = document.querySelector('.modal-btn');
+const rulesBtn = document.querySelector('.rules-btn');
+const modalBg = document.querySelector('.modal-bg');
+console.log(modalBtn);
 let playerCardCount = 26;
 let cpuCardCount = 26;
 let playerDeck = [];
@@ -19,6 +22,14 @@ let cpuDeck = [];
 let warArr = [];
 let wins = 0;
 let totalGames = 0;
+
+modalBtn.addEventListener('click', () => {
+    modalBg.classList.remove('modal-bg-active');
+});
+
+rulesBtn.addEventListener('click', () => {
+    modalBg.classList.add('modal-bg-active');
+});
 
 window.addEventListener('load', async() => {
     const user = await getUser();
