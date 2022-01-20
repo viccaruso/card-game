@@ -16,6 +16,14 @@ const modalBtn = document.querySelector('.modal-btn');
 const rulesBtn = document.querySelector('.rules-btn');
 const modalBg = document.querySelector('.modal-bg');
 
+const winModalBtn = document.querySelector('.win-modal-btn');
+const winModalBg = document.querySelector('.win-modal-bg');
+const loseModalBtn = document.querySelector('.lose-modal-btn');
+const loseModalBg = document.querySelector('.lose-modal-bg');
+
+const playerStack = document.querySelector('.player-deck');
+const cpuStack = document.querySelector('.cpu-deck');
+
 let user;
 let player;
 
@@ -35,6 +43,53 @@ rulesBtn.addEventListener('click', () => {
     modalBg.classList.add('modal-bg-active');
 });
 
+winModalBtn.addEventListener('click', () => {
+    winModalBg.classList.remove('modal-bg-active');
+    
+    displayName(player);
+
+    hitBtn.setAttribute('disabled', true);
+
+    hitBtn.removeAttribute('disabled');
+
+    const hands = splitDeck(shuffleDeck(deck));
+    shuffleSound.play();
+
+    playerCardCount = 26;
+    cpuCardCount = 26;
+    playerCardCountEl.textContent = playerCardCount;
+    cpuCardCountEl.textContent = cpuCardCount;
+
+    playerDeck = hands.playerDeck;
+    cpuDeck = hands.cpuDeck;
+
+    playerStack.classList.add('card-back');
+    cpuStack.classList.add('card-back');
+});
+
+loseModalBtn.addEventListener('click', () => {
+    loseModalBg.classList.remove('modal-bg-active');
+    displayName(player);
+
+    hitBtn.setAttribute('disabled', true);
+
+    hitBtn.removeAttribute('disabled');
+
+    const hands = splitDeck(shuffleDeck(deck));
+    shuffleSound.play();
+
+    playerCardCount = 26;
+    cpuCardCount = 26;
+    playerCardCountEl.textContent = playerCardCount;
+    cpuCardCountEl.textContent = cpuCardCount;
+
+    playerDeck = hands.playerDeck;
+    cpuDeck = hands.cpuDeck;
+
+    playerStack.classList.add('card-back');
+    cpuStack.classList.add('card-back');
+});
+
 window.addEventListener('load', async() => {
     user = await getUser();
     player = await getPlayerProfile(user.user.id);
@@ -46,6 +101,7 @@ window.addEventListener('load', async() => {
     cpuDeck = player.cpu_deck;
 
     displayName(player);
+    checkWin();
 
 });
 
@@ -66,6 +122,9 @@ newGameButton.addEventListener('click', async() => {
 
     playerDeck = hands.playerDeck;
     cpuDeck = hands.cpuDeck;
+
+    playerStack.classList.add('card-back');
+    cpuStack.classList.add('card-back');
 
 });
 
@@ -151,11 +210,16 @@ function checkWin() {
         wins++;
         totalGames++;
 
-        // render "You WIN" modal 
         const displayName = document.querySelector('.display-name');
         displayName.textContent = `You won the War!`;
+        
+        // render "You WIN" modal 
+        winModalBg.classList.add('modal-bg-active');
 
         hitBtn.setAttribute('disabled', true);
+
+        playerStack.classList.remove('card-back');
+        cpuStack.classList.remove('card-back');
     }
     if (playerCardCount < 23) {
         totalGames++;
@@ -164,7 +228,12 @@ function checkWin() {
         const displayName = document.querySelector('.display-name');
         displayName.textContent = `You were defeated!`;
 
+        loseModalBg.classList.add('modal-bg-active');
+
         hitBtn.setAttribute('disabled', true);
+
+        playerStack.classList.remove('card-back');
+        cpuStack.classList.remove('card-back');
     }
 }
 
