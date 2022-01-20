@@ -378,7 +378,7 @@ table {
     margin-bottom: 5rem;
 }
 
-.win-modal-bg .sign-in-modal-bg {
+.win-modal-bg, .sign-in-modal-bg {
     position: fixed;
     top: 0;
     left: 0;
@@ -391,21 +391,6 @@ table {
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s opacity 0.5s;
-}
-
-.sign-in-modal {
-    background-color: white;
-    width: 30%;
-    height: 30%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    transition: visibility 0s, opacity 0.5s;
-}
-
-.modal-bg-active {
-    visibility: visible;
-    opacity: 1;
 }
 
 .win-modal {
@@ -463,6 +448,16 @@ table {
 .lose-modal-btn {
     margin-top: 5px;
     margin-bottom: 5px;
+}
+
+.sign-in-modal {
+    background-color: white;
+    width: 30%;
+    height: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    transition: visibility 0s, opacity 0.5s;
 }
 
 .modal-bg-active {
