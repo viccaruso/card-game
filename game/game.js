@@ -12,6 +12,8 @@ const hitBtn = document.querySelector('.hit-btn');
 const playerCardContainer = document.querySelector('.player-card');
 const cpuCardContainer = document.querySelector('.cpu-card');
 
+let user;
+let player;
 let playerCardCount = 26;
 let cpuCardCount = 26;
 let playerDeck = [];
@@ -21,9 +23,8 @@ let wins = 0;
 let totalGames = 0;
 
 window.addEventListener('load', async() => {
-    const user = await getUser();
-    const player = await getPlayerProfile(user.user.id);
-
+    user = await getUser();
+    player = await getPlayerProfile(user.user.id);
     playerCardCount = player.player_deck.length;
     cpuCardCount = player.cpu_deck.length;
     wins = player.wins;
@@ -31,22 +32,12 @@ window.addEventListener('load', async() => {
     playerDeck = player.player_deck;
     cpuDeck = player.cpu_deck;
 
-    playerCardCountEl.textContent = playerCardCount;
-    cpuCardCountEl.textContent = cpuCardCount;
-
-    const displayName = document.querySelector('.display-name');
-    
-    displayName.textContent = `${player.player_name} is doing battle!`;
+    displayName(player);
 
 });
 
 newGameButton.addEventListener('click', async() => {
-    const user = await getUser();
-    const player = await getPlayerProfile(user.user.id);
-
-    const displayName = document.querySelector('.display-name');
-    
-    displayName.textContent = `${player.player_name} is doing battle!`;
+    displayName(player);
 
     hitBtn.setAttribute('disabled', true);
 
@@ -56,8 +47,8 @@ newGameButton.addEventListener('click', async() => {
     shuffleSound.play();
 
     playerCardCount = 26;
-    playerCardCountEl.textContent = playerCardCount;
     cpuCardCount = 26;
+    playerCardCountEl.textContent = playerCardCount;
     cpuCardCountEl.textContent = cpuCardCount;
 
     playerDeck = hands.playerDeck;
@@ -175,8 +166,6 @@ function checkWin() {
 }
 
 async function saveGame() {
-    const user = await getUser();
-    const player = await getPlayerProfile(user.user.id);
 
     const game = {
         wins,
@@ -186,4 +175,12 @@ async function saveGame() {
     };
 
     await updateGame(player.id, game);
+}
+
+function displayName(player) {
+    const displayName = document.querySelector('.display-name');
+
+    playerCardCountEl.textContent = playerCardCount;
+    cpuCardCountEl.textContent = cpuCardCount;
+    displayName.textContent = `${player.player_name} is doing battle!`;
 }

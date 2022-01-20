@@ -231,3 +231,13 @@ footer {
     justify-content: space-between;
 
 }
+
+table, th, td {
+    border: 1px solid black;
+  }
+
+  table { 
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+  }
