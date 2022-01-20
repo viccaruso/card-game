@@ -14,7 +14,7 @@ body {
     --shadow: 0px 10px 20px -12px rgba(0,0,0,0.45);
     --gutter: 30px;
     --footer-height: 25px;
-  
+
     
     font-family: 'Titillium Web', sans-serif;
     background-color: var(--wintergreen-dream);
@@ -202,11 +202,10 @@ footer {
 }
 
 .one {
-
-   grid-column-start: 2;
-   grid-column-end: 3;
-   grid-row-start: 1;
-   grid-row-end: 2;
+grid-column-start: 2;
+grid-column-end: 3;
+grid-row-start: 1;
+grid-row-end: 2;
 }
 
 .two {
@@ -272,9 +271,6 @@ footer {
     border: solid 5px var(--dark-wood-brown);
     padding: 1.5rem;
     margin: 3px;
-
-
-    
 }
 
 .modal h2 {
@@ -294,16 +290,16 @@ footer {
 
 table, th, td {
     border: 1px solid black;
-  }
+}
 
 table { 
     width: 100%;
     border-collapse: collapse;
     text-align: center;
-  }
+}
 
 
 .leaderboard-container {
-      margin-bottom: 5rem;
-  }
+    margin-bottom: 5rem;
+}
 

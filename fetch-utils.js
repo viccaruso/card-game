@@ -12,7 +12,7 @@ export async function createPlayerProfile(player) {
             wins: player.wins,
             total_games: player.total_games
         }]);
-    console.log('createPlayerProfile(player) returned: ', response);
+
     return checkError(response);
 }
 
@@ -22,7 +22,7 @@ export async function getPlayerProfile(id) {
         .select()
         .match({ user_id: id })
         .single();
-    console.log('getPlayerProfile(id) returned: ', response);
+    
 
     return checkError(response);
 }
@@ -32,7 +32,7 @@ export async function getLeaderboard() {
         .from('player_profile')
         .select()
         .order('wins', { ascending: false });
-    console.log('getLeaderboard returned: ', response);
+
     return checkError(response);
 }
 
@@ -46,12 +46,9 @@ export async function updateGame(id, game) {
             cpu_deck: game.cpuDeck,
         }])
         .match({ id });
-    console.log(game);
+    
     return checkError(response);
 }
-
-
-
 
 
 export async function getUser() {
