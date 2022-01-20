@@ -30,6 +30,8 @@ main {
 }
 
 header {
+    position: sticky;
+    top: 0;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -49,8 +51,9 @@ footer {
     height: var(--footer-height);
     display: flex;
     justify-content: flex-end;
-    background-color: var(--color3);
+    background-color: var(--castleton-green);
     box-shadow: var(--shadow);
+    margin-top: 1rem;
 }
 
 .auth-main {
@@ -293,9 +296,14 @@ table, th, td {
     border: 1px solid black;
   }
 
-  table { 
+table { 
     width: 100%;
     border-collapse: collapse;
     text-align: center;
+  }
+
+
+.leaderboard-container {
+      margin-bottom: 5rem;
   }
 

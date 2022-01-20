@@ -7,7 +7,6 @@ export function renderCard(card) {
     let suit = '';
     let value = '';
 
-
     switch (card.value) {
         case 11:
             value = 'J';
@@ -100,6 +99,14 @@ export function renderPlayer(player) {
 }
 
 export function renderLeaderboard(arr) {
+    // Create container to hold leaderboard title and table
+    const leaderboardContainer = document.createElement('div');
+
+    // Create header for leaderboard
+    const leaderboardtitleEl = document.createElement('h1');
+    leaderboardtitleEl.textContent = 'Leaderboard';
+    leaderboardtitleEl.style.textAlign = 'center';
+
     // Create table with a body and header
     const table = document.createElement('table');
     const tbody = document.createElement('tbody');
@@ -145,6 +152,9 @@ export function renderLeaderboard(arr) {
     // Append the header and the table to the body
     table.append(thead, tbody);
 
-    return table;
+    // Append title and table to container
+    leaderboardContainer.append(leaderboardtitleEl, table);
+
+    return leaderboardContainer;
 }
 
