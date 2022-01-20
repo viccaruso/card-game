@@ -21,11 +21,11 @@
     
             <button class="new-game">New Game</button>
 
-            <button class="modal">Rules</button>
+            <button class="rules-btn">Rules</button>
             
             <button id="logout">Logout</button>
         </div>
-    </header>    
+    </header>  
     <main>
         <h1 class="display-name"></h1>
         <div class="score-container">
@@ -38,13 +38,8 @@
         
         <div class="player-card-container">
             <div class="player-deck card-back">Player Deck</div>
-
-            <!-- this div gives us an empty container with the exact dimensions of the "card" we will render -->
             
             <div class="player-card">
-
-                <!-- this div is the "card" we render on hit -->
-
 
             </div>
         </div>
@@ -54,6 +49,20 @@
             <div class="cpu-card"></div>
             <div class="cpu-deck card-back">CPU DECK</div>
         </div> 
+        <div class="modal-bg">
+            <div class="modal">
+                <h2>RULES OF WAR</h2>
+                <p>The goal is to be the first player to win all 52 cards</p>
+                <h2>THE DEAL</h2>
+                <p>The deck is divided evenly, with each player receiving 26 cards, dealt one at a time, face down. Anyone may deal first. Each player places their stack of cards face down, in front of them.</p>
+                <h2>THE PLAY</h2>
+                <p>Each player turns up a card at the same time and the player with the higher card takes both cards and puts them, face down, on the bottom of their stack.
+                If the cards are the same rank, it is War. Each player turns three cards face down and one card face up. The player with the higher face up card takes both piles (ten cards). If the face up cards are again the same rank, each player places another three cards face down and turns another card face up. The player with the higher card takes all 18 cards, and so on.</p>
+                <h2>HOW TO KEEP SCORE</h2>
+                <p>The game ends when one player has 10 or fewer cards.</p>
+                <button class="modal-btn">Go to War</button>
+            </div>
+        </div>  
 
         <audio class="soundBtn" src="../assets/shufflesound.wav"></audio>
     </main>
