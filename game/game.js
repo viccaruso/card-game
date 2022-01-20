@@ -1,4 +1,4 @@
-import { checkAuth, getLeaderboard, getPlayerProfile, getUser, logout } from '../fetch-utils.js';
+import { checkAuth, getLeaderboard, getPlayerProfile, getUser, logout, updateGame } from '../fetch-utils.js';
 import { deck, shuffleDeck, splitDeck } from '../deck.js';
 import { renderCard } from '../render-utils.js';
 checkAuth();
@@ -24,29 +24,32 @@ window.addEventListener('load', async() => {
     const user = await getUser();
     const player = await getPlayerProfile(user.user.id);
 
+    playerCardCount = player.player_deck.length;
+    cpuCardCount = player.cpu_deck.length;
+    wins = player.wins;
+    totalGames = player.total_games;
+    playerDeck = player.player_deck;
+    cpuDeck = player.cpu_deck;
+
+    playerCardCountEl.textContent = playerCardCount;
+    cpuCardCountEl.textContent = cpuCardCount;
+
+    const displayName = document.querySelector('.display-name');
+    
+    displayName.textContent = `${player.player_name} is doing battle!`;
+
+});
+
+newGameButton.addEventListener('click', async() => {
+    const user = await getUser();
+    const player = await getPlayerProfile(user.user.id);
+
     const displayName = document.querySelector('.display-name');
     
     displayName.textContent = `${player.player_name} is doing battle!`;
 
     hitBtn.setAttribute('disabled', true);
 
-    // const hands = splitDeck(shuffleDeck(deck));
-    // console.log('The two hands are: ', hands);
-    // shuffleSound.play();
-
-    // userCardCount = 26;
-    // userCardCountEl.textContent = userCardCount;
-    // cpuCardCount = 26;
-    // cpuCardCountEl.textContent = cpuCardCount;
-
-    // playerDeck = hands.playerDeck;
-    // cpuDeck = hands.cpuDeck;
-
-    // console.log(playerDeck, cpuDeck);
-
-});
-
-newGameButton.addEventListener('click', async() => {
     hitBtn.removeAttribute('disabled');
 
     const hands = splitDeck(shuffleDeck(deck));
@@ -74,7 +77,7 @@ logoutButton.addEventListener('click', () => {
 
 
 function playGame() {
-    
+    hitBtn.removeAttribute('disabled');
 
     const playerHand = playerDeck.shift();
     const cpuHand = cpuDeck.shift();
@@ -124,8 +127,9 @@ function playGame() {
 
     playerCardCountEl.textContent = playerCardCount;
     cpuCardCountEl.textContent = cpuCardCount;
-    setTimeout(resetCards, 500);
     checkWin();
+    setTimeout(resetCards, 500);
+    saveGame();
 }
 
 function displayCards(playerHand, cpuHand) {
@@ -139,12 +143,12 @@ function resetCards() {
     playerCardContainer.textContent = '';
     cpuCardContainer.textContent = '';
 
-    hitBtn.removeAttribute('disabled');
+    // hitBtn.removeAttribute('disabled');
 
 }
 
 function checkWin() {
-    if (cpuCardCount < 20) {
+    if (cpuCardCount < 23) {
         wins++;
         totalGames++;
         console.error('YOU WON THE WAR', cpuCardCount);
@@ -152,12 +156,34 @@ function checkWin() {
         // updates total games for player
         // render "You WIN" modal 
         
+        const displayName = document.querySelector('.display-name');
+        displayName.textContent = `You won the War!`;
+        
+        hitBtn.setAttribute('disabled', true);
     }
-    if (playerCardCount < 20) {
+    if (playerCardCount < 23) {
         totalGames++;
         console.error('YOU LOST', playerCardCount); 
         // updates total games for player
         // render "YOU LOST" modal 
+        
+        const displayName = document.querySelector('.display-name');
+        displayName.textContent = `You were defeated!`;
+        
+        hitBtn.setAttribute('disabled', true);
     }
 }
- 
+
+async function saveGame() {
+    const user = await getUser();
+    const player = await getPlayerProfile(user.user.id);
+
+    const game = {
+        wins,
+        totalGames,
+        playerDeck,
+        cpuDeck,
+    };
+
+    await updateGame(player.id, game);
+}

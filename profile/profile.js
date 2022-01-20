@@ -13,7 +13,8 @@ logoutButton.addEventListener('click', () => {
 window.addEventListener('load', async() => {
     const statsContainer = document.querySelector('.stats-container');
     const leaderboardContainer = document.querySelector('.leaderboard-container');
-    console.log(leaderboardContainer);
+// console.log(leaderboardContainer);
+
     const user = await getUser();
     const leaderboard = await getLeaderboard();
     console.log('leaderboard:', leaderboard);

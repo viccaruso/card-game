@@ -23,7 +23,7 @@ export async function getPlayerProfile(id) {
         .match({ user_id: id })
         .single();
     console.log('getPlayerProfile(id) returned: ', response);
-     
+
     return checkError(response);
 }
 
@@ -31,7 +31,7 @@ export async function getLeaderboard() {
     const response = await client
         .from('player_profile')
         .select()
-        .order('wins', { ascending: true });
+        .order('wins', { ascending: false });
     console.log('getLeaderboard returned: ', response);
     return checkError(response);
 }
@@ -39,9 +39,14 @@ export async function getLeaderboard() {
 export async function updateGame(id, game) {
     const response = await client
         .from('player_profile')
-        .update([{ game }])
+        .update([{ 
+            wins: game.wins,
+            total_games: game.totalGames,
+            player_deck: game.playerDeck,
+            cpu_deck: game.cpuDeck,
+        }])
         .match({ id });
-
+    console.log(game);
     return checkError(response);
 }
 
