@@ -234,6 +234,7 @@ footer {
 
 }
 
+
 .modal-bg {
     position: fixed;
     top: 0;
@@ -287,3 +288,14 @@ footer {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+
+table, th, td {
+    border: 1px solid black;
+  }
+
+  table { 
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+  }
+

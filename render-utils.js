@@ -9,7 +9,7 @@ export function renderCard(card) {
 
 
     switch (card.value) {
-        case 11: 
+        case 11:
             value = 'J';
             break;
         case 12:
@@ -21,7 +21,7 @@ export function renderCard(card) {
         case 14:
             value = 'A';
             break;
-        default: 
+        default:
             value = card.value;
             break;
     }
@@ -47,40 +47,104 @@ export function renderCard(card) {
     cardFace.textContent = `${value} ${suit}`;
     cardDiv.append(cardFace);
     return cardDiv;
-    
+
 }
 
 export function renderPlayer(player) {
     const playerContainer = document.createElement('div');
     const nameEl = document.createElement('h1');
-    const winsEl = document.createElement('p');
-    const lossesEl = document.createElement('p');
-    const totalGamesEl = document.createElement('p');
+    nameEl.textContent = `${player.player_name}`;
+    nameEl.style.textAlign = 'center';
 
-    playerContainer.classList.add('player-container');
-    nameEl.classList.add('player-name');
-    winsEl.classList.add('wins');
-    lossesEl.classList.add('losses');
-    totalGamesEl.classList.add('games-played');
+    // Create table with body, header, and single row
+    const table = document.createElement('table');
+    const tbody = document.createElement('tbody');
+    const thead = document.createElement('thead');
+    const row = document.createElement('tr');
 
-    nameEl.textContent = player.player_name;
-    winsEl.textContent = `Total Wins: ${player.wins}`;
-    lossesEl.textContent = `Total Losses: ${player.total_games - player.wins}`;
-    totalGamesEl.textContent = `Total Games: ${player.total_games}`;
+    // Create header cells
+    const headwins = document.createElement('th');
+    const headloss = document.createElement('th');
+    const headgames = document.createElement('th');
+    const headpercent = document.createElement('th');
+    // Set content of header cells
+    headwins.textContent = 'Games Won';
+    headloss.textContent = 'Games Lost';
+    headgames.textContent = 'Total Games Played';
+    headpercent.textContent = 'Win Percentage';
+    // Append header cells to header
+    thead.append(headwins, headloss, headgames, headpercent);
 
-    playerContainer.append(nameEl, winsEl, lossesEl, totalGamesEl);
+    // Create row cells
+    const wins = document.createElement('td');
+    const losses = document.createElement('td');
+    const games = document.createElement('td');
+    const percentage = document.createElement('td');
+    // Set content of row cells
+    wins.textContent = `${player.wins}`;
+    losses.textContent = `${player.total_games - player.wins}`;
+    games.textContent = `${player.total_games}`;
+    percentage.textContent = `${(player.wins / player.total_games).toFixed(2)}`;
+    // Append row cells to row
+    row.append(wins, losses, games, percentage);
+
+    // Append row to body
+    tbody.append(row);
+    // Append header and body to table
+    table.append(thead, tbody);
+
+    // Append player name and table to container
+    playerContainer.append(nameEl, table);
+    
     return playerContainer;
 }
 
 export function renderLeaderboard(arr) {
-    const leaderboardContainer = document.createElement('div');
-    
-    for (let player of arr) {
-        console.log('player=player', player);
-        const playerDiv = renderPlayer(player);
-        leaderboardContainer.append(playerDiv);
-        
+    // Create table with a body and header
+    const table = document.createElement('table');
+    const tbody = document.createElement('tbody');
+    const thead = document.createElement('thead');
 
+    // Create header cells
+    const headname = document.createElement('th');
+    const headwins = document.createElement('th');
+    const headloss = document.createElement('th');
+    const headgames = document.createElement('th');
+    const headpercent = document.createElement('th');
+    // Set content of header cells
+    headname.textContent = 'Player Name';
+    headwins.textContent = 'Games Won';
+    headloss.textContent = 'Games Lost';
+    headgames.textContent = 'Total Games Played';
+    headpercent.textContent = 'Win Percentage';
+    // Append header cells into the header
+    thead.append(headname, headwins, headloss, headgames, headpercent);
+
+    // For every player in the array
+    for (let player of arr) {
+        // Create a table row
+        const row = document.createElement('tr');
+        // Create cells for the row 
+        const name = document.createElement('td');
+        const wins = document.createElement('td');
+        const losses = document.createElement('td');
+        const games = document.createElement('td');
+        const percentage = document.createElement('td');
+        // Set content of each cell
+        name.textContent = `${player.player_name}`;
+        wins.textContent = `${player.wins}`;
+        losses.textContent = `${player.total_games - player.wins}`;
+        games.textContent = `${player.total_games}`;
+        percentage.textContent = `${(player.wins / player.total_games).toFixed(2)}`;
+        // Append the cells tot he row
+        row.append(name, wins, losses, games, percentage);
+        // Append the row to the table body
+        tbody.append(row);
     }
-    return leaderboardContainer;
+
+    // Append the header and the table to the body
+    table.append(thead, tbody);
+
+    return table;
 }
+
