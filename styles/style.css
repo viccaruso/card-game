@@ -202,11 +202,11 @@ footer {
 }
 
 .one {
-   position: relative;
-   grid-column-start: 2;
-   grid-column-end: 3;
-   grid-row-start: 1;
-   grid-row-end: 2;
+    position: relative;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
 }
 
 .one:hover {
@@ -231,7 +231,6 @@ footer {
 }
 
 .two {
-   
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 1;
@@ -257,7 +256,6 @@ footer {
 }
 
 .three {
- 
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 2;
@@ -308,14 +306,12 @@ background-color: black;
     width: 12.96rem;
 }
 
- 
 .stats-container {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 
 }
-
 
 .modal-bg {
     position: fixed;
@@ -341,7 +337,6 @@ background-color: black;
     align-items: center;
     flex-direction: column;
     text-align: center;
-    font-size: .6rem;
     border-radius: 7px;
     border: solid 5px var(--dark-wood-brown);
     padding: 1.5rem;
@@ -355,7 +350,6 @@ background-color: black;
 
 .modal p {
     margin: 0 auto;
-
 }
 
 .modal button {
@@ -378,7 +372,7 @@ table {
     margin-bottom: 5rem;
 }
 
-.win-modal-bg, .sign-in-modal-bg {
+.win-modal-bg, .lose-modal-bg, .sign-in-modal-bg {
     position: fixed;
     top: 0;
     left: 0;
@@ -393,7 +387,7 @@ table {
     transition: visibility 0s opacity 0.5s;
 }
 
-.win-modal {
+.win-modal, .lose-modal, .sign-in-modal {
     background-color: var(--opal);
     width: 40%;
     height: 20%;
@@ -402,62 +396,14 @@ table {
     align-items: center;
     flex-direction: column;
     text-align: center;
-    font-size: .6rem;
     border-radius: 7px;
     border: solid 5px var(--dark-wood-brown);
     padding: 1.5rem;
     margin: 3px;
 }
 
-.win-modal-btn {
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.lose-modal-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.5s;
-}
-
-.lose-modal {
-    background-color: var(--opal);
-    width: 40%;
-    height: 20%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    font-size: .6rem;
-    border-radius: 7px;
-    border: solid 5px var(--dark-wood-brown);
-    padding: 1.5rem;
-    margin: 3px;
-}
-
-.lose-modal-btn {
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
-
-.sign-in-modal {
-    background-color: white;
-    width: 30%;
-    height: 30%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    transition: visibility 0s, opacity 0.5s;
+.win-modal-btn, .lose-modal-btn, .sign-in-modal-btn {
+    margin: 0 auto;
 }
 
 .modal-bg-active {
