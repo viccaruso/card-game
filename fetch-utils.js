@@ -10,7 +10,6 @@ export async function createPlayerProfile(player) {
         .insert([{
             player_name: player.player_name,
             wins: player.wins,
-            losses: player.losses,
             total_games: player.total_games
         }]);
     console.log('createPlayerProfile(player) returned: ', response);
