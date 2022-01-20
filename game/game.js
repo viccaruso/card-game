@@ -16,6 +16,12 @@ const modalBtn = document.querySelector('.modal-btn');
 const rulesBtn = document.querySelector('.rules-btn');
 const modalBg = document.querySelector('.modal-bg');
 
+const winModalBtn = document.querySelector('.win-modal-btn');
+const winModalBg = document.querySelector('.win-modal-bg');
+const loseModalBtn = document.querySelector('.lose-modal-btn');
+const loseModalBg = document.querySelector('.lose-modal-bg');
+
+
 let user;
 let player;
 
@@ -33,6 +39,47 @@ modalBtn.addEventListener('click', () => {
 
 rulesBtn.addEventListener('click', () => {
     modalBg.classList.add('modal-bg-active');
+});
+
+winModalBtn.addEventListener('click', () => {
+    winModalBg.classList.remove('modal-bg-active');
+    
+    displayName(player);
+
+    hitBtn.setAttribute('disabled', true);
+
+    hitBtn.removeAttribute('disabled');
+
+    const hands = splitDeck(shuffleDeck(deck));
+    shuffleSound.play();
+
+    playerCardCount = 26;
+    cpuCardCount = 26;
+    playerCardCountEl.textContent = playerCardCount;
+    cpuCardCountEl.textContent = cpuCardCount;
+
+    playerDeck = hands.playerDeck;
+    cpuDeck = hands.cpuDeck;
+});
+
+loseModalBtn.addEventListener('click', () => {
+    loseModalBg.classList.remove('modal-bg-active');
+    displayName(player);
+
+    hitBtn.setAttribute('disabled', true);
+
+    hitBtn.removeAttribute('disabled');
+
+    const hands = splitDeck(shuffleDeck(deck));
+    shuffleSound.play();
+
+    playerCardCount = 26;
+    cpuCardCount = 26;
+    playerCardCountEl.textContent = playerCardCount;
+    cpuCardCountEl.textContent = cpuCardCount;
+
+    playerDeck = hands.playerDeck;
+    cpuDeck = hands.cpuDeck;
 });
 
 window.addEventListener('load', async() => {
@@ -155,6 +202,8 @@ function checkWin() {
         const displayName = document.querySelector('.display-name');
         displayName.textContent = `You won the War!`;
 
+        winModalBg.classList.add('modal-bg-active');
+
         hitBtn.setAttribute('disabled', true);
     }
     if (playerCardCount < 23) {
@@ -163,6 +212,8 @@ function checkWin() {
         // render "YOU LOST" modal?
         const displayName = document.querySelector('.display-name');
         displayName.textContent = `You were defeated!`;
+
+        loseModalBg.classList.add('modal-bg-active');
 
         hitBtn.setAttribute('disabled', true);
     }
