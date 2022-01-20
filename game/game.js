@@ -1,4 +1,4 @@
-import { checkAuth, getLeaderboard, getPlayerProfile, logout } from '../fetch-utils.js';
+import { checkAuth, getLeaderboard, getPlayerProfile, getUser, logout } from '../fetch-utils.js';
 import { deck, shuffleDeck, splitDeck } from '../deck.js';
 import { renderCard } from '../render-utils.js';
 checkAuth();
@@ -21,6 +21,13 @@ let wins = 0;
 let totalGames = 0;
 
 window.addEventListener('load', async() => {
+    const user = await getUser();
+    const player = await getPlayerProfile(user.user.id);
+
+    const displayName = document.querySelector('.display-name');
+    
+    displayName.textContent = `${player.player_name} is doing battle!`;
+
     hitBtn.setAttribute('disabled', true);
 
     // const hands = splitDeck(shuffleDeck(deck));
