@@ -1,4 +1,3 @@
-
 body {
     --castleton-green: #225d4bff;
     --wintergreen-dream: #608e84ff;
@@ -9,16 +8,14 @@ body {
     --light-wood-brown: #B07C4F;
     --black: #000000ff;
     --dark-slate-blue: #553c8eff;
-    
+
     --header-height: 40px;
-    --shadow: 0px 10px 20px -12px rgba(0,0,0,0.45);
+    --shadow: 0px 10px 20px -12px rgba(0, 0, 0, 0.45);
     --gutter: 30px;
     --footer-height: 25px;
 
-    
     font-family: 'Titillium Web', sans-serif;
     background-color: var(--wintergreen-dream);
-    background-image: url(../assets/wargame3.jpg);
 }
 
 main {
@@ -128,6 +125,8 @@ footer {
     text-align: center;
     justify-content: center;
     align-items: center;
+    background-image: url('../assets/card_back.png');
+    background-size: contain;
 }
 
 .red {
@@ -206,31 +205,20 @@ footer {
     /* border: solid 1px black; */
 }
 
+.name-about {
+    color: white;
+}
+
+
 .one {
-
-   position: relative;
-   grid-column-start: 2;
-   grid-column-end: 3;
-   grid-row-start: 1;
-   grid-row-end: 2;
-
-grid-column-start: 2;
-grid-column-end: 3;
-grid-row-start: 1;
-grid-row-end: 2;
-
+    position: relative;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
 }
 
-.one:hover {
-    background-color: black;
-}
-
-.one .trevText {
-    visibility: hidden;
-    
-}
-.one:hover .trevText {
-    visibility: visible;
+.trevText {
     color: white;
 }
 
@@ -238,28 +226,20 @@ grid-row-end: 2;
 .one img {
     height: 18rem;
     width: 12.96rem;
+
 }
 
 .two {
-   
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 1;
     grid-row-end: 2;
 
 }
-.two:hover {
-    background-color: black;
-}
-
-.two .vicText {
-    visibility: hidden;
-}
-
-.two:hover .vicText {
-    visibility: visible;
+.vicText {
     color: white;
 }
+
 
 .two img {
     height: 18rem;
@@ -267,25 +247,17 @@ grid-row-end: 2;
 }
 
 .three {
- 
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 2;
     grid-row-end: 3;
 }
 
-.three:hover {
-background-color: black;
-}
-
-.three .denText {
-    visibility: hidden;
-}
-
-.three:hover .denText {
-    visibility: visible;
+.denText {
     color: white;
 }
+
+
 
 .three img {
     height: 18rem;
@@ -300,16 +272,7 @@ background-color: black;
     grid-row-end: 3;
 }
 
-.four:hover {
-    background-color: black;
-}
-
-.four .cliffText {
-    visibility: hidden;
-}
-
-.four:hover .cliffText {
-    visibility: visible;
+.cliffText {
     color: white;
 }
 
@@ -322,8 +285,8 @@ background-color: black;
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100vh;
+    width: 110%;
+    height: 100%;
     background-image: linear-gradient(to left, rgb(10, 143, 103), rgb(7, 151, 108));
     opacity: 0.3;
     z-index: -1;
@@ -336,25 +299,19 @@ background-color: black;
 
 }
 
-
 .modal-bg {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
     align-items: center;
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.5s;
-}
-
-.modal-bg-active {
-    visibility: visible;
-    opacity: 1;
 }
 
 .modal {
@@ -366,7 +323,6 @@ background-color: black;
     align-items: center;
     flex-direction: column;
     text-align: center;
-    font-size: .6rem;
     border-radius: 7px;
     border: solid 5px var(--dark-wood-brown);
     padding: 1.5rem;
@@ -380,7 +336,6 @@ background-color: black;
 
 .modal p {
     margin: 0 auto;
-
 }
 
 .modal button {
@@ -392,7 +347,7 @@ table, th, td {
     border: 1px solid black;
 }
 
-table { 
+table {
     width: 100%;
     border-collapse: collapse;
     text-align: center;
@@ -403,3 +358,41 @@ table {
     margin-bottom: 5rem;
 }
 
+.win-modal-bg, .lose-modal-bg, .sign-in-modal-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s opacity 0.5s;
+}
+
+.win-modal, .lose-modal, .sign-in-modal {
+    background-color: var(--opal);
+    width: 40%;
+    height: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    border-radius: 7px;
+    border: solid 5px var(--dark-wood-brown);
+    padding: 1.5rem;
+    margin: 3px;
+}
+
+.win-modal-btn, .lose-modal-btn, .sign-in-modal-btn {
+    margin: 0 auto;
+}
+
+.modal-bg-active {
+    visibility: visible;
+    opacity: 1;
+}

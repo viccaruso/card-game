@@ -9,10 +9,7 @@ logoutButton.addEventListener('click', () => {
 });
 const aboutMe = document.querySelector('.about-me-container');
 const slider = document.querySelector('.slider');
-const aboutOne = document.querySelector('.about-div one');
-const aboutTwo = document.querySelector('.about-div two');
-const aboutThree = document.querySelector('.about-div three');
-const aboutFour = document.querySelector('.about-div four');
+
 
 
     
@@ -31,7 +28,7 @@ timeLine.fromTo(
         1.3,
         { width: '100%' },
             // eslint-disable-next-line no-undef
-        { width: '80%', ease: Power2.easeInOut }
+        { width: '100%', ease: Power2.easeInOut }
     )
     
     .fromTo(
