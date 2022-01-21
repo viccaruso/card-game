@@ -249,4 +249,7 @@ function displayName(player) {
     playerCardCountEl.textContent = playerCardCount;
     cpuCardCountEl.textContent = cpuCardCount;
     displayName.textContent = `${player.player_name} is doing battle!`;
+
+    playerStack.classList.add('card-back');
+    cpuStack.classList.add('card-back');
 }
