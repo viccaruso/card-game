@@ -15,7 +15,8 @@ body {
     --footer-height: 25px;
 
     font-family: 'Titillium Web', sans-serif;
-    background-color: var(--wintergreen-dream);
+    background: rgb(27, 77, 62);
+    background: linear-gradient(61deg, rgba(27, 77, 62, 1) 0%, rgba(23, 177, 105, 1) 52%, rgba(0, 139, 139, 1) 100%);
 }
 
 main {
@@ -33,7 +34,8 @@ header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background-color: var(--castleton-green);
+    background: rgb(27, 77, 62);
+    background: linear-gradient(61deg, rgba(27, 77, 62, 1) 0%, rgba(23, 177, 105, 1) 52%, rgba(0, 139, 139, 1) 100%);
     height: var(--header-height);
     box-shadow: var(--shadow);
 }
@@ -49,7 +51,8 @@ footer {
     height: var(--footer-height);
     display: flex;
     justify-content: flex-end;
-    background-color: var(--castleton-green);
+    background: rgb(27, 77, 62);
+    background: linear-gradient(61deg, rgba(27, 77, 62, 1) 0%, rgba(23, 177, 105, 1) 52%, rgba(0, 139, 139, 1) 100%);
     box-shadow: var(--shadow);
     margin-top: 1rem;
 }
@@ -191,99 +194,52 @@ footer {
     right: -25px;
 }
 
-
 .about-me-container {
     display: grid;
     align-items: center;
     text-align: center;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
     gap: 4rem;
-
 }
-
-
 
 .about-div {
     width: 300px;
     height: 289px;
-    /* border: solid 1px black; */
 }
 
 .name-about {
     color: white;
 }
 
-
-.one {
-    position: relative;
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 2;
-}
-
-.trevText {
+.trevText, .denText, .vicText, .cliffText {
     color: white;
 }
 
-
-.one img {
+.one img, .two img, .three img, .four img  {
     height: 18rem;
     width: 12.96rem;
+    border-radius: 8px;
+}
 
+.one {
+    grid-column-start: 1;
+    grid-column-end: 2;
 }
 
 .two {
-    grid-column-start: 3;
-    grid-column-end: 4;
-    grid-row-start: 1;
-    grid-row-end: 2;
-
-}
-.vicText {
-    color: white;
-}
-
-
-.two img {
-    height: 18rem;
-    width: 12.96rem;
+    grid-column-start: 2;
+    grid-column-end: 3;
 }
 
 .three {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 3;
-}
-
-.denText {
-    color: white;
-}
-
-
-
-.three img {
-    height: 18rem;
-    width: 12.96rem;
+    grid-column-start: 3;
+    grid-column-end: 4;
 }
 
 .four {
-    
-    grid-column-start: 3;
-    grid-column-end: 4;
-    grid-row-start: 2;
-    grid-row-end: 3;
-}
-
-.cliffText {
-    color: white;
-}
-
-.four img {
-    height: 18rem;
-    width: 12.96rem;
+    grid-column-start: 4;
+    grid-column-end: 5;
 }
 
 .slider {
@@ -301,7 +257,6 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
 }
 
 .modal-bg {
@@ -357,7 +312,6 @@ table {
     border-collapse: collapse;
     text-align: center;
 }
-
 
 .leaderboard-container {
     margin-bottom: 5rem;
