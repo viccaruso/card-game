@@ -281,6 +281,10 @@ footer {
     width: 12.96rem;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 83828a3b5debfb474c17ef43653b354bc7893f1c
 .slider {
     position: absolute;
     top: 0;
@@ -292,6 +296,11 @@ footer {
     z-index: -1;
 }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 83828a3b5debfb474c17ef43653b354bc7893f1c
 .stats-container {
     display: flex;
     flex-direction: row;
