@@ -139,6 +139,11 @@ footer {
 
 .hit-btn {
     margin-top: 1.2rem;
+    cursor: pointer;
+    height: 4.5rem;
+    width: 3.24rem;
+    border-radius: 6px;
+    background-color: rgb(163, 163, 163);
 }
 
 .score-container {
@@ -281,10 +286,6 @@ footer {
     width: 12.96rem;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 83828a3b5debfb474c17ef43653b354bc7893f1c
 .slider {
     position: absolute;
     top: 0;
@@ -296,11 +297,6 @@ footer {
     z-index: -1;
 }
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 83828a3b5debfb474c17ef43653b354bc7893f1c
 .stats-container {
     display: flex;
     flex-direction: row;
