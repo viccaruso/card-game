@@ -108,8 +108,6 @@ window.addEventListener('load', async() => {
 newGameButton.addEventListener('click', async() => {
     displayName(player);
 
-    hitBtn.setAttribute('disabled', true);
-
     hitBtn.removeAttribute('disabled');
 
     const hands = splitDeck(shuffleDeck(deck));
@@ -140,7 +138,7 @@ logoutButton.addEventListener('click', () => {
 
 
 function playGame() {
-    hitBtn.removeAttribute('disabled');
+    
 
     const playerHand = playerDeck.shift();
     const cpuHand = cpuDeck.shift();
@@ -187,7 +185,7 @@ function playGame() {
     playerCardCountEl.textContent = playerCardCount;
     cpuCardCountEl.textContent = cpuCardCount;
     checkWin();
-    setTimeout(resetCards, 500);
+    setTimeout(resetCards, 1500);
     saveGame();
 }
 
@@ -202,7 +200,7 @@ function resetCards() {
     playerCardContainer.textContent = '';
     cpuCardContainer.textContent = '';
 
-    // hitBtn.removeAttribute('disabled');
+    hitBtn.removeAttribute('disabled');
 }
 
 function checkWin() {
@@ -216,8 +214,6 @@ function checkWin() {
         // render "You WIN" modal 
         winModalBg.classList.add('modal-bg-active');
 
-        hitBtn.setAttribute('disabled', true);
-
         playerStack.classList.remove('card-back');
         cpuStack.classList.remove('card-back');
     }
@@ -229,8 +225,6 @@ function checkWin() {
         displayName.textContent = `You were defeated!`;
 
         loseModalBg.classList.add('modal-bg-active');
-
-        hitBtn.setAttribute('disabled', true);
 
         playerStack.classList.remove('card-back');
         cpuStack.classList.remove('card-back');
