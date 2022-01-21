@@ -194,100 +194,52 @@ footer {
     right: -25px;
 }
 
-
 .about-me-container {
     display: grid;
     align-items: center;
     text-align: center;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
     gap: 4rem;
-
 }
-
-
 
 .about-div {
     width: 300px;
     height: 289px;
-    /* border: solid 1px black; */
 }
 
 .name-about {
     color: white;
 }
 
-
-.one {
-    position: relative;
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 2;
-}
-
-.trevText {
+.trevText, .denText, .vicText, .cliffText {
     color: white;
 }
 
-
-.one img {
+.one img, .two img, .three img, .four img  {
     height: 18rem;
     width: 12.96rem;
+    border-radius: 8px;
+}
 
+.one {
+    grid-column-start: 1;
+    grid-column-end: 2;
 }
 
 .two {
-    grid-column-start: 3;
-    grid-column-end: 4;
-    grid-row-start: 1;
-    grid-row-end: 2;
-
-}
-
-.vicText {
-    color: white;
-}
-
-
-.two img {
-    height: 18rem;
-    width: 12.96rem;
+    grid-column-start: 2;
+    grid-column-end: 3;
 }
 
 .three {
-    grid-column-start: 2;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 3;
-}
-
-.denText {
-    color: white;
-}
-
-
-
-.three img {
-    height: 18rem;
-    width: 12.96rem;
+    grid-column-start: 3;
+    grid-column-end: 4;
 }
 
 .four {
-
-    grid-column-start: 3;
-    grid-column-end: 4;
-    grid-row-start: 2;
-    grid-row-end: 3;
-}
-
-.cliffText {
-    color: white;
-}
-
-.four img {
-    height: 18rem;
-    width: 12.96rem;
+    grid-column-start: 4;
+    grid-column-end: 5;
 }
 
 .slider {
@@ -360,7 +312,6 @@ table {
     border-collapse: collapse;
     text-align: center;
 }
-
 
 .leaderboard-container {
     margin-bottom: 5rem;
