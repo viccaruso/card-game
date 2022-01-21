@@ -15,7 +15,8 @@ body {
     --footer-height: 25px;
 
     font-family: 'Titillium Web', sans-serif;
-    background-color: var(--wintergreen-dream);
+    background: rgb(27, 77, 62);
+    background: linear-gradient(61deg, rgba(27, 77, 62, 1) 0%, rgba(23, 177, 105, 1) 52%, rgba(0, 139, 139, 1) 100%);
 }
 
 main {
@@ -33,7 +34,8 @@ header {
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    background-color: var(--castleton-green);
+    background: rgb(27, 77, 62);
+    background: linear-gradient(61deg, rgba(27, 77, 62, 1) 0%, rgba(23, 177, 105, 1) 52%, rgba(0, 139, 139, 1) 100%);
     height: var(--header-height);
     box-shadow: var(--shadow);
 }
@@ -49,7 +51,8 @@ footer {
     height: var(--footer-height);
     display: flex;
     justify-content: flex-end;
-    background-color: var(--castleton-green);
+    background: rgb(27, 77, 62);
+    background: linear-gradient(61deg, rgba(27, 77, 62, 1) 0%, rgba(23, 177, 105, 1) 52%, rgba(0, 139, 139, 1) 100%);
     box-shadow: var(--shadow);
     margin-top: 1rem;
 }
@@ -241,6 +244,7 @@ footer {
     grid-row-end: 2;
 
 }
+
 .vicText {
     color: white;
 }
@@ -270,7 +274,7 @@ footer {
 }
 
 .four {
-    
+
     grid-column-start: 3;
     grid-column-end: 4;
     grid-row-start: 2;
@@ -301,7 +305,6 @@ footer {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
 }
 
 .modal-bg {
