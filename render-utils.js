@@ -1,47 +1,25 @@
+// I usually prefer hashMaps like these to switch statements
+const valueMap = {
+    11: 'J',
+    12: 'Q',
+    13: 'K',
+    14: 'A'
+};
+
+const suitMap = {
+    'hearts': '❤️',
+    'clubs': '♣️',
+    'diamonds': '♦️',
+    'spades': '♠️'
+};
+
 export function renderCard(card) {
     const cardDiv = document.createElement('div');
     cardDiv.classList.add('card-face');
 
     const cardFace = document.createElement('p');
-
-    let suit = '';
-    let value = '';
-
-    switch (card.value) {
-        case 11:
-            value = 'J';
-            break;
-        case 12:
-            value = 'Q';
-            break;
-        case 13:
-            value = 'K';
-            break;
-        case 14:
-            value = 'A';
-            break;
-        default:
-            value = card.value;
-            break;
-    }
-
-    switch (card.suit) {
-        case 'hearts':
-            suit = '❤️';
-            break;
-        case 'clubs':
-            suit = '♣️';
-            break;
-        case 'diamonds':
-            suit = '♦️';
-            break;
-        case 'spades':
-            suit = '♠️';
-            break;
-        default:
-            suit = card.suit;
-            break;
-    }
+    const value = valueMap[card.value] || card.value;
+    const suit = suitMap[card.value] || card.suit;
 
     cardFace.textContent = `${value} ${suit}`;
     cardDiv.append(cardFace);
@@ -52,7 +30,7 @@ export function renderCard(card) {
 export function renderPlayer(player) {
     const playerContainer = document.createElement('div');
     const nameEl = document.createElement('h1');
-    nameEl.textContent = `${player.player_name}`;
+    nameEl.textContent = player.player_name;
     nameEl.style.textAlign = 'center';
 
     // Create table with body, header, and single row
@@ -83,7 +61,7 @@ export function renderPlayer(player) {
     wins.textContent = `${player.wins}`;
     losses.textContent = `${player.total_games - player.wins}`;
     games.textContent = `${player.total_games}`;
-    percentage.textContent = `${(player.wins / player.total_games).toFixed(2)}`;
+    percentage.textContent = (player.wins / player.total_games).toFixed(2);
     // Append row cells to row
     row.append(wins, losses, games, percentage);
 
@@ -138,11 +116,13 @@ export function renderLeaderboard(arr) {
         const games = document.createElement('td');
         const percentage = document.createElement('td');
         // Set content of each cell
-        name.textContent = `${player.player_name}`;
-        wins.textContent = `${player.wins}`;
-        losses.textContent = `${player.total_games - player.wins}`;
-        games.textContent = `${player.total_games}`;
-        percentage.textContent = `${(player.wins / player.total_games).toFixed(2)}`;
+        name.textContent = player.player_name;
+        // noticing some repetition here, with the same work being done upstairs in the same file. 
+        // It would make sense to try to find a way to abstract this out to a function
+        wins.textContent = player.wins;
+        losses.textContent = player.total_games - player.wins;
+        games.textContent = player.total_games;
+        percentage.textContent = (player.wins / player.total_games).toFixed(2);
         // Append the cells tot he row
         row.append(name, wins, losses, games, percentage);
         // Append the row to the table body

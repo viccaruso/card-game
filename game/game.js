@@ -1,6 +1,8 @@
 import { checkAuth, getPlayerProfile, getUser, logout, updateGame } from '../fetch-utils.js';
 import { deck, shuffleDeck, splitDeck } from '../deck.js';
 import { renderCard } from '../render-utils.js';
+import { DECK_SIZE, CARD_COUNT } from './game-constants.js';
+
 checkAuth();
 
 const logoutButton = document.getElementById('logout');
@@ -46,48 +48,12 @@ rulesBtn.addEventListener('click', () => {
 winModalBtn.addEventListener('click', () => {
     winModalBg.classList.remove('modal-bg-active');
     
-    displayName(player);
-
-    hitBtn.setAttribute('disabled', true);
-
-    hitBtn.removeAttribute('disabled');
-
-    const hands = splitDeck(shuffleDeck(deck));
-    shuffleSound.play();
-
-    playerCardCount = 26;
-    cpuCardCount = 26;
-    playerCardCountEl.textContent = playerCardCount;
-    cpuCardCountEl.textContent = cpuCardCount;
-
-    playerDeck = hands.playerDeck;
-    cpuDeck = hands.cpuDeck;
-
-    playerStack.classList.add('card-back');
-    cpuStack.classList.add('card-back');
+    doRepeatedStuff();
 });
 
 loseModalBtn.addEventListener('click', () => {
     loseModalBg.classList.remove('modal-bg-active');
-    displayName(player);
-
-    hitBtn.setAttribute('disabled', true);
-
-    hitBtn.removeAttribute('disabled');
-
-    const hands = splitDeck(shuffleDeck(deck));
-    shuffleSound.play();
-
-    playerCardCount = 26;
-    cpuCardCount = 26;
-    playerCardCountEl.textContent = playerCardCount;
-    cpuCardCountEl.textContent = cpuCardCount;
-
-    playerDeck = hands.playerDeck;
-    cpuDeck = hands.cpuDeck;
-
-    playerStack.classList.add('card-back');
-    cpuStack.classList.add('card-back');
+    doRepeatedStuff();
 });
 
 window.addEventListener('load', async() => {
@@ -136,6 +102,19 @@ logoutButton.addEventListener('click', () => {
     logout();
 });
 
+function doDeckStuff(deckToPush, playerHand, cpuHand) {
+    if (warArr.length > 0) {
+            
+        for (let card of warArr) {
+            deckToPush.push(card);
+        }
+        warArr = [];
+    }
+    deckToPush.push(playerHand, cpuHand);
+    playerCardCount = playerDeck.length;
+    cpuCardCount = cpuDeck.length;
+
+}
 
 function playGame() {
     
@@ -145,30 +124,9 @@ function playGame() {
     displayCards(playerHand, cpuHand);
 
     if (playerHand.value > cpuHand.value) {
-
-        if (warArr.length > 0) {
-            
-            for (let card of warArr) {
-                playerDeck.push(card);
-            }
-            warArr = [];
-        }
-
-        playerDeck.push(playerHand, cpuHand);
-
-        playerCardCount = playerDeck.length;
-        cpuCardCount = cpuDeck.length;
+        doDeckStuff(playerDeck, playerHand, cpuHand);
     } else if (cpuHand.value > playerHand.value) {
-        if (warArr.length > 0) {
-            
-            for (let card of warArr) {
-                cpuDeck.push(card);
-            }
-            warArr = [];
-        }
-        cpuDeck.push(playerHand, cpuHand);
-        playerCardCount = playerDeck.length;
-        cpuCardCount = cpuDeck.length;
+        doDeckStuff(cpuDeck, playerHand, cpuHand);
     } else {
         displayCards(playerHand, cpuHand);
         const playerTopOne = playerDeck.shift();
@@ -178,6 +136,7 @@ function playGame() {
         const cpuTopTwo = cpuDeck.shift();
         const cpuTopThree = cpuDeck.shift();
         console.error('!!!!!!WAR!!!!!!');
+        // a little confused here. When you loop above, it says "card of warArr". Is each of these things being pushed a single card? If so, there are some names I'd like to see changed. If not, I 'd like to see the name change in the loop
         warArr.push(playerHand, cpuHand, playerTopOne, playerTopTwo, playerTopThree, cpuTopOne, cpuTopTwo, cpuTopThree);
 
     }
@@ -203,8 +162,9 @@ function resetCards() {
     hitBtn.removeAttribute('disabled');
 }
 
+
 function checkWin() {
-    if (cpuCardCount < 23) {
+    if (cpuCardCount < DECK_SIZE) {
         wins++;
         totalGames++;
 
@@ -217,7 +177,7 @@ function checkWin() {
         playerStack.classList.remove('card-back');
         cpuStack.classList.remove('card-back');
     }
-    if (playerCardCount < 23) {
+    if (playerCardCount < DECK_SIZE) {
         totalGames++;
 
         // render "YOU LOST" modal?
@@ -252,4 +212,27 @@ function displayName(player) {
 
     playerStack.classList.add('card-back');
     cpuStack.classList.add('card-back');
+}
+
+function doRepeatedStuff() {
+    displayName(player);
+
+    hitBtn.setAttribute('disabled', true);
+
+    hitBtn.removeAttribute('disabled');
+
+    const hands = splitDeck(shuffleDeck(deck));
+    shuffleSound.play();
+
+    playerCardCount = CARD_COUNT;
+    cpuCardCount = CARD_COUNT;
+    playerCardCountEl.textContent = playerCardCount;
+    cpuCardCountEl.textContent = cpuCardCount;
+
+    playerDeck = hands.playerDeck;
+    cpuDeck = hands.cpuDeck;
+
+    playerStack.classList.add('card-back');
+    cpuStack.classList.add('card-back');
+
 }
